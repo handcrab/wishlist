@@ -52,7 +52,7 @@ end
 end
 
 То(/^я должен увидеть сообщение об ошибке$/) do
-  expect(page).to have_content "errors"
+  expect(page).to have_content /error/i
 end
 
 То(/^я снова должен оказаться на странице добавления желания$/) do
@@ -64,41 +64,96 @@ end
 
 # SHOW
 Допустим(/^я нахожусь на главной странице$/) do
-  # visit root_path
+  visit root_path
 end
 
 Допустим(/^у меня сохранено (\d+) желания$/) do |arg1|
-  # @wishes = FactoryGirl.create :valid_wish
+  # factory :iphone do
+  #     title 'айфон'
+  #     price '30000'
+  #     priority '2' 
+  #     description 'нужен для получения юзер-экспериенса'   
+  #   end
+
+  #   factory :notebook do
+  #     title 'Notebook'
+  #     price ' 20000'
+  #     priority '7' 
+  #     description '*[asus](http://market.yandex.ru)'   
+  #   end
+
+  #   factory :ram do
+  #     title 'оперативка 8Gb для ноута'
+  #     price '5 000'
+  #     priority '7' 
+  #     description ''   
+  #   end
+  @iphone = FactoryGirl.attributes_for :iphone
+  @notebook = FactoryGirl.attributes_for :notebook
+  @ram = FactoryGirl.attributes_for :ram
+
+  Wish.create! [@iphone, @notebook, @ram]  
+  expect(Wish.count).to eq 3  
 end
 
 То(/^я должен видеть список из (\d+)х желаний$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content @iphone[:title]
+  expect(page).to have_content @notebook[:title]
+  expect(page).to have_content @ram[:title]  
 end
 
 То(/^каждое желание дожно иметь ссылку на просмотр его полной версии$/) do
-  pending # express the regexp above with the code you wish you had
+  @iphone = Wish.find_by title: @iphone[:title]
+  @notebook = Wish.find_by title: @notebook[:title]
+  @ram = Wish.find_by title: @ram[:title]
+
+  find_link @iphone.title
+  find "a[href='#{wish_path @iphone}']"
+
+  find_link @notebook.title
+  find "a[href='#{wish_path @notebook}']"
+
+  find_link @ram.title
+  find "a[href='#{wish_path @ram}']"
+  # find("a", :text => "berlin")
 end
 
-Допустим(/^у меня есть желание с названием "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Допустим(/^у меня есть желание с названием "(.*?)"$/) do |title|
+  @iphone = Wish.create! FactoryGirl.attributes_for :iphone
 end
 
 Если(/^я перехожу на страницу с этим желанием$/) do
-  pending # express the regexp above with the code you wish you had
+  visit wish_path @iphone
 end
 
 То(/^я должен увидеть подробное описание этого желания$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content @iphone.title
+  expect(page).to have_content @iphone.price
+  expect(page).to have_content @iphone.priority
+  expect(page).to have_content @iphone.description
 end
 
 То(/^ссылку на его редактирование$/) do
-  pending # express the regexp above with the code you wish you had
+  # find_link wish_path @iphone
+  find_link 'Edit'
 end
 
 То(/^ссылку на его удаление$/) do
-  pending # express the regexp above with the code you wish you had
+  find_link 'Delete'
 end
 
 То(/^я должен иметь возможность вернуться к списку всех желаний$/) do
-  pending # express the regexp above with the code you wish you had
+  # find_link 'Back'
+  # find "a[href='#{wishes_path}']"
+  expect(page).to have_link 'Back', href: wishes_path
+end
+
+
+Допустим(/^я перехожу на страницу с несуществующим желанием$/) do
+  nonexistent_id = 42
+  visit wish_path(id: nonexistent_id)
+end
+
+То(/^я должен быть перенаправлен на страницу со списком всех желаний$/) do
+  expect(current_path).to eq wishes_path  
 end

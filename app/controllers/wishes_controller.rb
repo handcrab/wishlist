@@ -14,10 +14,20 @@ class WishesController < ApplicationController
   end
 
   def show
-    @wish = Wish.find params[:id]
+    begin     
+      @wish = Wish.find params[:id]
+    rescue Exception => e
+      redirect_to wishes_path, status: 301, flash: { error: 'Error: Not Found'}
+    end
   end
 
-  # def index
+  def index
+    @wishes = Wish.all
+  end
+
+  # def edit
+  # end
+
   private
   def wish_params
     params.require(:wish).permit(:title, :priority, :price, :description)
