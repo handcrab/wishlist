@@ -4,3 +4,9 @@
 %p= @wish.price
 
 %p= @wish.description
+
+%p
+  = link_to 'Edit', '#' #edit_wish_path(@wish)
+  = link_to 'Delete', '#'
+
+= link_to 'Back', wishes_path

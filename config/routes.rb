@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'wishes/new'
-  # root 'wishes#index'
+  # get 'wishes/new'
+  root 'wishes#index'
   # get 'wishes/new' => 'wishes#new'
-  resources :wishes, only: [:new, :create, :show]
+  resources :wishes, only: [:new, :create, :show, :index, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

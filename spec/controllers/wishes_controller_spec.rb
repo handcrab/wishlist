@@ -20,12 +20,23 @@ RSpec.describe WishesController, type: :controller do
     end
   end
 
-  # ---
-  # describe "GET #index" do 
-  #   it "populates an array of wishes" 
-  #   it "renders the :index view" 
-  # end 
+  # __________
+  describe "GET #index" do 
+    before(:each) do
+      get :index
+    end
 
+    it "populates an array of wishes" do
+      expect(assigns[:wishes]).not_to be_nil #eq wish
+    end
+    
+    it "renders the :index view" do
+      expect(response).to have_http_status :success
+      expect(response).to render_template :index
+    end
+  end 
+
+  # _________
   describe "GET #show" do 
     let(:valid_wish) { FactoryGirl.create :valid_wish }      
 
@@ -41,6 +52,22 @@ RSpec.describe WishesController, type: :controller do
 
     it "renders the :show template" do 
       expect(response).to render_template :show
+    end
+
+    describe 'access to nonexistent wish' do
+      before(:each) do
+        allow(Wish).to receive(:find) { raise ActiveRecord::RecordNotFound }
+        invalid_id = 42
+        get :show, id: invalid_id
+      end
+      it 'should redirect to :index page' do
+        expect(response).to have_http_status 301
+        expect(response).to redirect_to wishes_path
+      end
+
+      it 'should show an error message' do
+        expect(flash[:error]).not_to be_nil
+      end
     end
   end 
 
