@@ -1,0 +1,31 @@
+ru:
+  title: Хотелки
+  error: Ошибка
+  activerecord:
+    models:
+      wish: 'Желание'
+    attributes:
+      wish:
+        title: "Название"
+        description: "Описание"
+        priority: 'Приоритет'
+        price: 'Цена'
+  forms:
+    messages:
+      success: "Операция прошла успешно!"
+      confirm: 'Вы уверены?'
+      not_found: 'Ошибка: Запись не найдена'
+    buttons:
+      edit: "Изменить"
+      submit: "Подтвердить"
+      delete: "Удалить"
+      back: 'Отмена'
+  menu:
+    new_wish: 'Добавить желание'
+  wishes:
+    index:
+      title: "Список желаний"
+    edit:
+      title: "Изменить желание"
+    new:
+      title: "Новое желание"

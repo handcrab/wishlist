@@ -20,4 +20,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: Wishlist
+  error: Error
+  activerecord:
+    attributes:
+      wish:
+        title: "Title"
+        description: "Description"
+        priority: 'PriorityYYY'
+        price: 'Price'
+  forms:
+    messages:
+      success: "Operation succeeded!"
+      confirm: 'Are you sure?'
+      not_found: 'Error: Not Found'
+    buttons:
+      edit: "Edit"
+      submit: "Submit"
+      delete: "Delete"
+      back: 'Back'
+  menu:
+    new_article: "Add an article"
+  wishes:
+    index:
+      title: "Wishlist"
+    edit:
+      title: "Edit wish"
+    new:
+      title: "New wish"

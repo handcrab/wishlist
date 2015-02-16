@@ -1,9 +1,10 @@
-%h1 Edit the wish
+%h1= t 'wishes.edit.title'
 
 = form_for @wish do |f|
+
   - if @wish.errors.any?
     #errors
-      %h2= pluralize @wish.errors.count, "error"
+      %h2= t 'errors.template.header', model: t('activerecord.models.wish'), count: @wish.errors.count
       %ul
         - @wish.errors.full_messages.each do |msg|
           %li= msg
