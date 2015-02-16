@@ -176,3 +176,24 @@ end
   # expect(current_path).to eq edit_wish_path(@iphone)
   expect(page).to have_content "Edit the wish"
 end
+
+Допустим(/^я нахожусь на странице этого желания$/) do
+  step "я перехожу на страницу с этим желанием"  
+end
+
+Если(/^я нажимаю кнопку "(.*?)"$/) do |button|
+  # expect(current_path).to eq wish_path(@iphone)
+  click_link 'Delete'
+  # pending # click_button find(:css, 'input[type="submit"]').value
+end
+
+То(/^желание должно быть удалено из базы данных$/) do
+  # expect { step 'я нажимаю кнопку "Удалить"' }.to change(Wish, :count).by(-1)
+  # expect(Wish.count).to eq 0
+  @wish = Wish.find_by title: @iphone[:title]
+  expect(@wish).to be_nil
+end
+
+То(/^я должен оказаться на главной странице$/) do
+  expect(current_path).to eq wishes_path
+end

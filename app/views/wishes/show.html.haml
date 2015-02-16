@@ -6,7 +6,7 @@
 %p= @wish.description
 
 %p
-  = link_to 'Edit', '#' #edit_wish_path(@wish)
-  = link_to 'Delete', '#'
+  = link_to 'Edit', edit_wish_path(@wish)
+  = link_to 'Delete', wish_path(@wish), method: :delete, data: { confirm: 'Are you sure?' } 
 
 = link_to 'Back', wishes_path

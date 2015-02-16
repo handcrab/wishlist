@@ -223,4 +223,30 @@ RSpec.describe WishesController, type: :controller do
       # end      
     end 
   end
+
+  #______
+  describe 'DELETE #destroy' do
+    let!(:wish) { create :iphone }
+    before(:each) do
+      allow(Wish).to receive(:find).and_return wish
+      # allow(wish).to receive(:destroy).and_return true      
+    end
+          
+    it 'sends :destroy message to Wish model' do
+      expect(Wish).to receive(:find).with wish.id.to_s
+      expect(wish).to receive(:destroy)
+      delete :destroy, id: wish.id      
+    end
+
+    it 'redirects to :index page' do
+      delete :destroy, id: wish.id
+      expect(response).to have_http_status :redirect # 202?
+      expect(response).to redirect_to wishes_path
+    end
+
+    #  it "destroys the requested wish" do
+    #   expect { delete :destroy, id: wish.id
+    #     }.to change(Wish, :count).by(-1)
+    # end 
+  end
 end
