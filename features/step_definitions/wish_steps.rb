@@ -14,9 +14,8 @@ end
   fill_in 'wish_price', with: @iphone[:price] 
   fill_in 'wish_description', with: @iphone[:description]
   
-
-  click_button "Create Wish"
-  # click_button find(:css, 'input[type="submit"]').value
+  # click_button "Create Wish"
+  click_button find(:css, 'input[type="submit"]').value
 end
 
 То(/^желание должно быть сохранено в базе данных$/) do  
@@ -47,12 +46,17 @@ end
 end
 
 То(/^желание не должно быть сохранено в базе данных$/) do  
-  expect(Wish.count).to eq 0
+  # expect(Wish.count).to eq 0
   expect(Wish.find_by(title: @invalid_data[:title])).to be_nil
 end
 
-То(/^я должен увидеть сообщение об ошибке$/) do
-  expect(page).to have_content /error/i
+То(/^я должен увидеть сообщение об ([^\s]+)$/) do |message|
+  case message
+  when /ошиб/
+    expect(page).to have_content /error/i
+  when /успе/
+    expect(page).to have_content /succ/i
+  end
 end
 
 То(/^я снова должен оказаться на странице добавления желания$/) do
@@ -67,7 +71,7 @@ end
   visit root_path
 end
 
-Допустим(/^у меня сохранено (\d+) желания$/) do |arg1|
+Допустим(/^у меня сохранено (\d+) желания$/) do |count|
   # factory :iphone do
   #     title 'айфон'
   #     price '30000'
@@ -93,7 +97,7 @@ end
   @ram = FactoryGirl.attributes_for :ram
 
   Wish.create! [@iphone, @notebook, @ram]  
-  expect(Wish.count).to eq 3  
+  expect(Wish.count).to eq count.to_i  
 end
 
 То(/^я должен видеть список из (\d+)х желаний$/) do |arg1|
@@ -151,9 +155,24 @@ end
 
 Допустим(/^я перехожу на страницу с несуществующим желанием$/) do
   nonexistent_id = 42
-  visit wish_path(id: nonexistent_id)
+  visit wish_path id: nonexistent_id
 end
 
 То(/^я должен быть перенаправлен на страницу со списком всех желаний$/) do
   expect(current_path).to eq wishes_path  
+end
+
+# Допустим(/^я нахожусь на странице желания$/) do
+#   @iphone = Wish.create! FactoryGirl.attributes_for :iphone 
+# end
+
+Допустим(/^я нахожусь на странице редактирования желания "(.*?)"$/) do |title|
+  @iphone = Wish.find_by title: title
+  visit edit_wish_path @iphone
+end
+
+
+То(/^я снова должен оказаться на странице желания$/) do
+  # expect(current_path).to eq edit_wish_path(@iphone)
+  expect(page).to have_content "Edit the wish"
 end

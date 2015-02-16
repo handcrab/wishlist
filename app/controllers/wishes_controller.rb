@@ -25,8 +25,18 @@ class WishesController < ApplicationController
     @wishes = Wish.all
   end
 
-  # def edit
-  # end
+  def edit
+    @wish = Wish.find params[:id]
+  end
+
+  def update
+    @wish = Wish.find params[:id]
+    if @wish.update wish_params
+      redirect_to @wish, notice: "Success"
+    else
+      render :edit, status: 422
+    end
+  end
 
   private
   def wish_params

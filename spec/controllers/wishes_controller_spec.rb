@@ -95,7 +95,7 @@ RSpec.describe WishesController, type: :controller do
 
     # +++
     context "with valid attributes" do 
-      let!(:valid_wish) { FactoryGirl.create :valid_wish }
+      let!(:valid_wish) { create :valid_wish }
 
       before(:each) do
         allow(wish).to receive(:valid?).and_return true 
@@ -117,7 +117,6 @@ RSpec.describe WishesController, type: :controller do
         expect(flash[:notice]).not_to be_nil
       end
     end 
-
 
     # ----
     context "with invalid attributes" do 
@@ -143,4 +142,85 @@ RSpec.describe WishesController, type: :controller do
     end 
   end
 
+
+  # ________
+  describe "GET #edit" do
+    before(:each) do       
+      allow(Wish).to receive(:find).and_return wish
+      allow(wish).to receive(:id).and_return 42
+      # allow(MyMod::Utils).to receive(:find_x).and_return({something: 'testing'})
+      get :edit, id: wish.id 
+    end
+
+    it 'assigns a Wish variable to the view' do            
+      expect(assigns[:wish]).to eq wish
+    end
+
+    it "renders the :edit template" do                
+      expect(response).to have_http_status :success
+      expect(response).to render_template :edit
+    end
+  end
+
+
+  # _________ 
+  describe "PUT #update" do
+    let!(:old_wish) { create :iphone }
+    let!(:new_wish) { attributes_for :notebook } #stub_model Wish, id: 1 }     
+
+    before(:each) do
+      allow(Wish).to receive(:find).and_return old_wish      
+      # ???? stub strong params      
+      # allow_any_instance_of(WishesController).to receive(:wish_params).and_return new_wish         
+    end
+
+    it 'sends :find message to Wish class' do            
+      expect(Wish).to receive(:find).with(old_wish.id.to_s)#.and_return(old_wish)  
+      put :update, id: old_wish.id, wish: new_wish      
+    end
+
+    it 'sends :update message to Wish model' do
+      expect(old_wish).to receive(:update).with new_wish
+      put :update, id: old_wish.id, wish: new_wish
+    end
+
+    # +++
+    context "with valid attributes" do 
+      before(:each) do
+        allow(old_wish).to receive(:update).and_return true
+        put :update, id: old_wish.id, wish: new_wish         
+      end
+
+      it "redirects to the wish page" do
+        expect(response).to have_http_status :redirect  #??? :created        
+        expect(response).to redirect_to old_wish
+      end
+
+      it 'assigns a success flash message' do
+        expect(flash[:notice]).not_to be_nil
+      end
+    end
+
+    # ----
+    context "with invalid attributes" do 
+      before(:each) do
+        allow(old_wish).to receive(:update).and_return false
+        put :update, id: old_wish.id, wish: new_wish        
+      end
+       
+      it "re-renders the :edit template" do 
+        expect(response).to have_http_status 422                                
+        expect(response).to render_template :edit
+      end
+
+      # not empty form
+      it 'assigns wish variable to the View' do        
+        expect(assigns[:wish]).to eq old_wish
+      end
+
+      # it 'assigns error flash message' do
+      #   expect(flash[:error]).not_to be_nil
+      # end      
+    end 
+  end
 end
