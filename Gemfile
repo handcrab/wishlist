@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-
+# source 'https://rubygems.org'
+source 'http://production.s3.rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -48,9 +48,8 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring' 
-end
 
-group :test do
+  # tests
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'
@@ -58,5 +57,16 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  
+  gem 'guard-rspec' # guard :rspec, cmd:"spring rspec"
+  gem 'guard-cucumber' # guard init cucumber
+
+  gem "spring-commands-rspec" 
+  gem "spring-commands-cucumber"
+  # bundle exec spring binstub #=> generate bin/rspec
+  # spring stop
+  # time spring rspec
 end
 
+# group :test do
+# end
