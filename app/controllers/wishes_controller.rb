@@ -38,6 +38,12 @@ class WishesController < ApplicationController
     end
   end
 
+  def destroy
+    @wish = Wish.find params[:id]
+    @wish.destroy
+    redirect_to wishes_path, notice: 'Success'
+  end
+
   private
   def wish_params
     params.require(:wish).permit(:title, :priority, :price, :description)
