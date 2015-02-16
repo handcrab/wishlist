@@ -6,7 +6,7 @@ class WishesController < ApplicationController
   def create
     @wish = Wish.new wish_params
     if @wish.save
-      redirect_to @wish, notice: 'Success' #, status: :created  
+      redirect_to @wish, notice: t('forms.messages.success') #, status: :created  
     else
       # flash.now[:error] = 'Fail'
       render :new, status: 422
@@ -17,7 +17,8 @@ class WishesController < ApplicationController
     begin     
       @wish = Wish.find params[:id]
     rescue Exception => e
-      redirect_to wishes_path, status: 301, flash: { error: 'Error: Not Found'}
+      redirect_to wishes_path, status: 301, 
+        flash: { error: t('forms.messages.not_found')}
     end
   end
 
@@ -32,7 +33,7 @@ class WishesController < ApplicationController
   def update
     @wish = Wish.find params[:id]
     if @wish.update wish_params
-      redirect_to @wish, notice: "Success"
+      redirect_to @wish, notice: t('forms.messages.success')
     else
       render :edit, status: 422
     end
@@ -41,7 +42,7 @@ class WishesController < ApplicationController
   def destroy
     @wish = Wish.find params[:id]
     @wish.destroy
-    redirect_to wishes_path, notice: 'Success'
+    redirect_to wishes_path, notice: t('forms.messages.success')
   end
 
   private

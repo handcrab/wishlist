@@ -53,16 +53,16 @@ end
 То(/^я должен увидеть сообщение об ([^\s]+)$/) do |message|
   case message
   when /ошиб/
-    expect(page).to have_content /error/i
+    expect(page).to have_content /error|ошиб/i # TODO: /"#{I18n.t :error}"/i
   when /успе/
-    expect(page).to have_content /succ/i
+    expect(page).to have_content I18n.t('forms.messages.success') # /succ/i
   end
 end
 
 То(/^я снова должен оказаться на странице добавления желания$/) do
   # ???
   # expect(current_path).to eq(new_wish_path)
-  expect(page).to have_content "Add a new wish"
+  expect(page).to have_content I18n.t('wishes.new.title')
 end
 
 
@@ -137,19 +137,19 @@ end
   expect(page).to have_content @iphone.description
 end
 
-То(/^ссылку на его редактирование$/) do
-  # find_link wish_path @iphone
-  find_link 'Edit'
+То(/^ссылку на его редактирование$/) do  
+  expect(page).to have_link  I18n.t('forms.buttons.edit'), href: edit_wish_path(@iphone)  
+  # find_link I18n.t('forms.buttons.edit') #, href: edit_wish_path(@iphone)  
 end
 
 То(/^ссылку на его удаление$/) do
-  find_link 'Delete'
+  expect(page).to have_link  I18n.t('forms.buttons.delete'), href: wish_path(@iphone)  
+  # find_link I18n.t('forms.buttons.delete') #, href: edit_wish_path(@iphone)  
 end
 
-То(/^я должен иметь возможность вернуться к списку всех желаний$/) do
-  # find_link 'Back'
+То(/^я должен иметь возможность вернуться к списку всех желаний$/) do  
   # find "a[href='#{wishes_path}']"
-  expect(page).to have_link 'Back', href: wishes_path
+  expect(page).to have_link  I18n.t('forms.buttons.back'), href: wishes_path  
 end
 
 
@@ -162,9 +162,6 @@ end
   expect(current_path).to eq wishes_path  
 end
 
-# Допустим(/^я нахожусь на странице желания$/) do
-#   @iphone = Wish.create! FactoryGirl.attributes_for :iphone 
-# end
 
 Допустим(/^я нахожусь на странице редактирования желания "(.*?)"$/) do |title|
   @iphone = Wish.find_by title: title
@@ -174,7 +171,8 @@ end
 
 То(/^я снова должен оказаться на странице желания$/) do
   # expect(current_path).to eq edit_wish_path(@iphone)
-  expect(page).to have_content "Edit the wish"
+  # expect(page).to have_content "Edit the wish"
+  expect(page).to have_content I18n.t('wishes.edit.title')
 end
 
 Допустим(/^я нахожусь на странице этого желания$/) do
@@ -183,8 +181,7 @@ end
 
 Если(/^я нажимаю кнопку "(.*?)"$/) do |button|
   # expect(current_path).to eq wish_path(@iphone)
-  click_link 'Delete'
-  # pending # click_button find(:css, 'input[type="submit"]').value
+  click_link I18n.t('forms.buttons.delete')  
 end
 
 То(/^желание должно быть удалено из базы данных$/) do
