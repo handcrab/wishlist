@@ -59,7 +59,13 @@ RSpec.describe Wish, type: :model do
         expect(wish).to_not be_valid
       end
     end 
-
   end
   
+  describe 'default values' do
+    let(:no_priority_wish) { attributes_for :no_priority_wish }
+    subject { Wish.create no_priority_wish }
+
+    it { should be_valid }
+    its(:priority) { should == 0 }
+  end
 end

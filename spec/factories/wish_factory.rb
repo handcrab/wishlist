@@ -14,6 +14,12 @@ FactoryGirl.define do
       description 'нужен для получения юзер-экспериенса'   
     end
 
+    factory :no_priority_wish do
+      title 'ipad'
+      price '30000'       
+      description ''   
+    end
+
     factory :iphone do
       title 'айфон'
       price '30000'
