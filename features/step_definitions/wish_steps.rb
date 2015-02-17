@@ -1,7 +1,16 @@
-# CREATE
 Допустим(/^я нахожусь на странице добавления желания$/) do  
-  visit '/wishes/new'
+  visit new_wish_path
 end
+
+# Допустим(/^я нахожусь на (.*)$/) do |page|  
+#   path = case page
+#   when /странице добавления желания/
+#     new_wish_path
+#   when /главной странице/
+#     root_path
+#   end
+#   visit path
+# end
 
 Если(/^я ввожу верные данные$/) do
   @iphone = FactoryGirl.attributes_for :iphone
@@ -59,12 +68,16 @@ end
   end
 end
 
-То(/^я снова должен оказаться на странице добавления желания$/) do
-  # ???
-  # expect(current_path).to eq(new_wish_path)
-  expect(page).to have_content I18n.t('wishes.new.title')
+То(/^я снова должен оказаться на странице (.*)$/) do |wish_page|
+  wish_title = case wish_page
+  when /добавления желания/
+    I18n.t('wishes.new.title')
+  when /редактирования желания/    
+    # expect(current_path).to eq edit_wish_path(@iphone)
+    I18n.t('wishes.edit.title')
+  end
+  expect(page).to have_content wish_title
 end
-
 
 # SHOW
 Допустим(/^я нахожусь на главной странице$/) do
@@ -78,14 +91,12 @@ end
   #     priority '2' 
   #     description 'нужен для получения юзер-экспериенса'   
   #   end
-
   #   factory :notebook do
   #     title 'Notebook'
   #     price ' 20000'
   #     priority '7' 
   #     description '*[asus](http://market.yandex.ru)'   
   #   end
-
   #   factory :ram do
   #     title 'оперативка 8Gb для ноута'
   #     price '5 000'
@@ -113,12 +124,8 @@ end
 
   find_link @iphone.title
   find "a[href='#{wish_path @iphone}']"
-
-  find_link @notebook.title
-  find "a[href='#{wish_path @notebook}']"
-
-  find_link @ram.title
-  find "a[href='#{wish_path @ram}']"
+  find_link @notebook.title, href: wish_path(@notebook)
+  find_link @ram.title, href: wish_path(@ram)
   # find("a", :text => "berlin")
 end
 
@@ -152,9 +159,8 @@ end
   expect(page).to have_link  I18n.t('forms.buttons.back'), href: wishes_path  
 end
 
-
 Допустим(/^я перехожу на страницу с несуществующим желанием$/) do
-  nonexistent_id = 42
+  nonexistent_id = 'bad_id'
   visit wish_path id: nonexistent_id
 end
 
@@ -162,18 +168,16 @@ end
   expect(current_path).to eq wishes_path  
 end
 
-
 Допустим(/^я нахожусь на странице редактирования желания "(.*?)"$/) do |title|
-  @iphone = Wish.find_by title: title
+  # @iphone = Wish.find_by title: title
   visit edit_wish_path @iphone
 end
 
-
-То(/^я снова должен оказаться на странице желания$/) do
-  # expect(current_path).to eq edit_wish_path(@iphone)
-  # expect(page).to have_content "Edit the wish"
-  expect(page).to have_content I18n.t('wishes.edit.title')
-end
+# То(/^я снова должен оказаться на странице редактирования желания$/) do
+#   # expect(current_path).to eq edit_wish_path(@iphone)
+#   # expect(page).to have_content "Edit the wish"
+#   expect(page).to have_content I18n.t('wishes.edit.title')
+# end
 
 Допустим(/^я нахожусь на странице этого желания$/) do
   step "я перехожу на страницу с этим желанием"  
