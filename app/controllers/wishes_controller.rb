@@ -1,4 +1,6 @@
 class WishesController < ApplicationController
+  before_action :set_wish, only: [:update, :edit, :destroy]
+
   def new
     @wish = Wish.new
   end
@@ -16,7 +18,7 @@ class WishesController < ApplicationController
   def show
     begin     
       @wish = Wish.find params[:id]
-    rescue Exception => e
+    rescue ActiveRecord::RecordNotFound
       redirect_to wishes_path, status: 301, 
         flash: { error: t('forms.messages.not_found')}
     end
@@ -27,11 +29,9 @@ class WishesController < ApplicationController
   end
 
   def edit
-    @wish = Wish.find params[:id]
   end
 
   def update
-    @wish = Wish.find params[:id]
     if @wish.update wish_params
       redirect_to @wish, notice: t('forms.messages.success')
     else
@@ -40,7 +40,6 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    @wish = Wish.find params[:id]
     @wish.destroy
     redirect_to wishes_path, notice: t('forms.messages.success')
   end
@@ -48,5 +47,9 @@ class WishesController < ApplicationController
   private
   def wish_params
     params.require(:wish).permit(:title, :priority, :price, :description)
+  end
+
+  def set_wish
+    @wish = Wish.find params[:id]
   end
 end
