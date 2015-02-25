@@ -9,6 +9,10 @@ class Wish < ActiveRecord::Base
   scope :not_owned, -> { where owned: false }
   scope :owned, -> { where.not owned: false }
 
+  def toggle_owned
+    self.update owned: not(owned)
+  end
+
   protected
   def strip_whitespace
     self.price = price_before_type_cast.to_s.gsub(/\s+/, '') 

@@ -3,7 +3,7 @@ require 'rspec/its'
 
 RSpec.describe Wish, type: :model do
   let(:valid_attributes) { attributes_for :iphone }
-  subject { Wish.create valid_attributes }
+  subject { Wish.create! valid_attributes }
 
   it 'is an ActiveRecord model' do
     expect(Wish.superclass).to eq(ActiveRecord::Base)
@@ -63,7 +63,7 @@ RSpec.describe Wish, type: :model do
   
   describe 'default values' do
     let(:no_priority_wish) { attributes_for :no_priority_wish }
-    subject { Wish.create no_priority_wish }
+    subject { Wish.create! no_priority_wish }
 
     it { should be_valid }
     its(:priority) { should == 0 }
@@ -71,6 +71,26 @@ RSpec.describe Wish, type: :model do
 
   describe 'owned' do
     it { should respond_to :owned }
+    # default value
     it { should_not be_owned }
+  end
+
+  describe 'toggle_owned' do
+    # subject { Wish.create valid_attributes }
+    it { should respond_to :toggle_owned }
+
+    it 'shoul toggle the owned value' do
+      wish = Wish.create! attributes_for :notebook
+      expect(wish).not_to be_owned
+      wish.toggle_owned
+      expect(wish).to be_owned
+
+      wish.toggle_owned
+      expect(wish).not_to be_owned
+      # owned_wish = Wish.create! attributes_for(:owned_iphone)
+      # expect(owned_wish).to be_owned
+      # wish.toggle_owned
+      # expect(wish).not_to be_owned
+    end
   end
 end

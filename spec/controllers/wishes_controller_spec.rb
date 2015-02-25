@@ -52,6 +52,27 @@ RSpec.describe WishesController, type: :controller do
     it { respond_with :succes }
     it { render_template :index }
   end 
+
+
+  describe '#owned' do
+    let!(:iphone) { build_stubbed :owned_iphone }
+    before(:each) do       
+      Wish.stub_chain(:all, :owned).and_return [iphone]
+      # allow(Wish).to receive(:all).and_return []
+      get :owned 
+    end
+
+    it 'sends :owned message to Wish class' do
+      expect(Wish.all).to receive :owned
+      get :owned      
+    end
+    it "assigns @wishes" do            
+      expect(assigns[:wishes]).to include iphone #.not_to be_nil
+    end  
+    it { respond_with :succes }
+    it { render_template :index }
+  end
+
   #______
   describe "#show" do 
     # let(:valid_wish) { build_stubbed :iphone } 
@@ -221,6 +242,66 @@ RSpec.describe WishesController, type: :controller do
       #   expect(flash[:error]).not_to be_nil
       # end      
     end 
+  end
+  
+
+  describe '#toggle_owned' do
+    let!(:old_wish) { create :owned_iphone }
+    # let!(:new_wish) { attributes_for :notebook }   
+    let(:patch_request) { patch :toggle_owned, id: old_wish.id, format: :html }
+
+    before(:each) do
+      allow(Wish).to receive(:find).and_return old_wish
+      allow(old_wish).to receive(:update).and_return true      
+      # ???? stub strong params        
+    end
+
+    it 'sends :find message to Wish class' do            
+      expect(Wish).to receive(:find).with(old_wish.id.to_s) #.and_return old_wish
+      patch_request   
+    end
+
+    it 'sends :update message to Wish model' do
+      expect(old_wish).to receive(:update) # toggle_owned
+      patch_request
+    end
+
+    it 'assigns it to @wish' do 
+      patch_request
+      expect(assigns[:wish]).to eq old_wish
+    end
+    
+    it 'assigns @wishlist' do 
+      patch_request
+      expect(assigns[:wishlist]).not_to be_nil
+    end
+    
+    it { respond_with :redirect }
+    it { redirect_to old_wish } 
+    it 'assigns a success flash message' do
+      patch_request
+      expect(flash[:notice]).not_to be_nil
+    end
+
+    context 'xhr request' do      
+      let(:patch_request) { xhr :patch, :toggle_owned, id: old_wish.id, format: :js }       
+      # let(:patch_request) { patch :toggle_owned, id: old_wish.id, xhr: true }
+
+      before(:each) do
+        allow(Wish).to receive(:find).and_return old_wish
+        allow(old_wish).to receive(:update).and_return true 
+        patch_request           
+      end
+
+      it 'assigns @wishlist' do 
+        expect(assigns[:wishlist]).not_to be_nil
+      end
+
+      it 'sadsd' do
+        expect(response).to render_template :toggle_owned
+      end 
+      # it { render_template :index }
+    end
   end
   #-------
   # DELETE
