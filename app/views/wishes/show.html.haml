@@ -5,7 +5,7 @@
       = t('forms.buttons.edit')
     = link_to @wish, method: :delete, data: { confirm: t('forms.messages.confirm') }, class: "btn btn-danger btn-xs" do
       %span.glyphicon.glyphicon-trash(aria-hidden="true")
-      = t('forms.buttons.delete')
+      = t('forms.buttons.delete')    
 
   %h1= @wish.title
   %p= formatted_date @wish.created_at
@@ -19,4 +19,9 @@
 
   %p= simple_format @wish.description
 
-= link_to t('forms.buttons.back'), wishes_path
+  .btn-group
+    = link_to toggle_owned_wish_path(@wish), method: :patch, remote: true, class: 'owned btn btn-success' do
+      %span.glyphicon(aria-hidden="true" class="#{@wish.owned? ? 'glyphicon-star-empty' : 'glyphicon-star'}")    
+      = t('forms.buttons.owned')
+
+    = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
