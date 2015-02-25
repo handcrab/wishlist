@@ -1,5 +1,3 @@
-include ActionView::Helpers::NumberHelper
-
 Допустим(/^я нахожусь на странице добавления желания$/) do  
   visit new_wish_path
 end
@@ -39,6 +37,8 @@ end
 То(/^я должен оказаться на странице с этим желанием$/) do  
   expect(current_path).to eq(wish_path @wish)
   expect(page).to have_content @iphone[:title]
+  # raise @iphone[:description]
+  expect(page).to have_content sanitized_md @iphone[:description]
 end
 
 # ---
@@ -146,8 +146,9 @@ end
 То(/^я должен увидеть подробное описание этого желания$/) do
   expect(page).to have_content @iphone.title
   expect(page).to have_content number_to_currency(@iphone.price)
-  expect(page).to have_content @iphone.priority
-  expect(page).to have_content @iphone.description
+  expect(page).to have_content @iphone.priority  
+  expect(page).to have_content sanitized_md(@iphone[:description])  
+  #simple_markdown @iphone.description
 end
 
 То(/^ссылку на его редактирование$/) do  

@@ -1,4 +1,4 @@
-:books: dummy wishlish rails app #learning BDD and tests
+:books: dummy wishlist rails app #learning BDD and tests
 
 # Features
 - Users can add their wihes
@@ -8,3 +8,4 @@
 - markdown in a wish discription
 - users can edit only their wishes
 - private wishes
+- tags

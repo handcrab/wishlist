@@ -31,7 +31,9 @@ gem 'rails-i18n'
 gem 'bootstrap-sass'
 # gem 'devise'
 gem 'paperclip'
-
+gem 'redcarpet'
+# gem 'github-markdown', '~> 0.6.8'
+# gem 'github-markup'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
