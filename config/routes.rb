@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  # get 'wishes/new'
   root 'wishes#index'
-  # get 'wishes/new' => 'wishes#new'
+  
   resources :wishes do
     collection do
       get 'owned'
     end
-    # patch 'own', on: :member
+    patch 'toggle_owned', on: :member
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

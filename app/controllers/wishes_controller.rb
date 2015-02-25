@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, only: [:update, :edit, :destroy]
+  before_action :set_wish, only: [:update, :toggle_owned, :edit, :destroy]
 
   def new
     @wish = Wish.new
@@ -32,25 +32,34 @@ class WishesController < ApplicationController
   end
 
   def update
+    if @wish.update wish_params
+      redirect_to @wish, notice: t('forms.messages.success')
+    else
+      render :edit, status: 422 
+    end
+  end
+
+  def toggle_owned
     # if request.xhr?
     #   flash[:notice] = t 'forms.messages.success'
     #   flash.keep :notice
     #   # render js: "window.location = #{your_path}"
     # end
-
     respond_to do |format|
-      if @wish.update wish_params       
-        @wishlist = if wish_params[:owned] == 'true'
+      owned = not(@wish.owned)
+      if @wish.update owned: owned
+        
+        @wishlist = if owned
           Wish.all.not_owned
         else
           Wish.all.owned
         end
 
-        # flash.now[:notice] = t('forms.messages.success')
         format.html { redirect_to @wish, notice: t('forms.messages.success') }
         format.js
       else
-        format.html { render :edit, status: 422 } 
+        redirect_to @wish, alert: t(:error)
+        # format.html { render :edit, status: 422 } 
       end
     end
   end
