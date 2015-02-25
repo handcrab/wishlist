@@ -5,8 +5,27 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: 'alert'  
-    
-    = yield  
+
+  %body 
+    %nav.navbar.navbar-default      
+      .container 
+        .navbar-header
+          = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'        
+
+        %ul.nav.navbar-nav
+          %li{ class: "#{'active' if owned_wishes_page?}" }
+            = link_to owned_wishes_path do
+              %span.glyphicon.glyphicon-star(aria-hidden="true")
+              = t('menu.owned_wishes')
+
+        %ul.nav.navbar-nav.navbar-right
+          = link_to new_wish_path, class: 'btn btn-primary navbar-btn' do
+            %span.glyphicon.glyphicon-plus(aria-hidden="true")
+            = t('menu.new_wish')
+
+    .container    
+      .row
+        .col-md-8.col-md-push-2
+          = render 'shared/notice'
+          = yield
+    %footer

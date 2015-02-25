@@ -1,5 +1,5 @@
-# source 'https://rubygems.org'
-source 'http://production.s3.rubygems.org'
+source 'https://rubygems.org'
+# source 'http://production.s3.rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -26,7 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 
 gem 'rails-i18n'
+# gem 'russian'
 
+gem 'bootstrap-sass'
 # gem 'devise'
 # gem 'paperclip'
 

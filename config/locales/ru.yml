@@ -20,10 +20,12 @@ ru:
       edit: "Изменить"
       submit: "Подтвердить"
       delete: "Удалить"
-      back: 'Отмена'
+      cancel: 'Отмена'
+      back: 'К списку'
       owned: 'Исполнено'
   menu:
     new_wish: 'Добавить желание'
+    owned_wishes: 'Исполненные'
   wishes:
     index:
       title: "Список желаний"
