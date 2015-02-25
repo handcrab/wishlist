@@ -24,7 +24,7 @@ FactoryGirl.define do
       title 'айфон'
       price '30000'
       priority '2' 
-      description 'нужен для получения юзер-экспериенса'   
+      description '__нужен__ для получения юзер-экспериенса'   
     end
 
     factory :owned_iphone do
@@ -39,7 +39,14 @@ FactoryGirl.define do
       title 'Notebook'
       price ' 20000'
       priority '7' 
-      description '*[asus](http://market.yandex.ru)'   
+      description %Q(
+        ## Requrements:
+        + IPS
+        +  multi-touch
+
+        ~~http://market.yandex.ru/product/10830283/spec?hid=91013&track=char~~
+        ? http://market.yandex.ru/product/11000746/spec?hid=91013&track=tabs
+      )   
     end
 
     factory :ram do

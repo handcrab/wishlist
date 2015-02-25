@@ -17,7 +17,8 @@
 
   %p= number_to_currency @wish.price
 
-  %p= simple_format @wish.description
+  %hr
+  %p= simple_markdown @wish.description
 
   .btn-group
     = link_to toggle_owned_wish_path(@wish), method: :patch, remote: true, class: 'owned btn btn-success' do
