@@ -6,6 +6,11 @@ class Wish < ActiveRecord::Base
   validates :priority, numericality: { only_integer: true }, 
     inclusion: { in: 0..10, message: "%{value} should be between 0 and 10" }
 
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" } 
+  #, :default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  # validates :picture, presence: true
+  
   scope :not_owned, -> { where owned: false }
   scope :owned, -> { where.not owned: false }
 

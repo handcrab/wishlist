@@ -1,4 +1,4 @@
-= form_for @wish do |f|
+= form_for @wish, html: { multipart: true }  do |f|
   - if @wish.errors.any?
     #errors.bg-warning
       %h2= t 'errors.template.header', model: t('activerecord.models.wish'), count: @wish.errors.count
@@ -9,6 +9,13 @@
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :picture #, "#{img_f.object.new_record? ? 'Add' : 'Change'}"
+    %br
+    - unless f.object.new_record?
+      = image_tag f.object.send(:picture).url(:thumb)
+    = f.file_field :picture 
 
   .form-group
     = f.label :priority
