@@ -1,25 +1,34 @@
 = form_for @wish do |f|
-
   - if @wish.errors.any?
-    #errors
+    #errors.bg-warning
       %h2= t 'errors.template.header', model: t('activerecord.models.wish'), count: @wish.errors.count
       %ul
         - @wish.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.label :title
-  = f.text_field :title
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
 
-  = f.label :priority
-  = f.number_field :priority, in: 0..10
+  .form-group
+    = f.label :priority
+    = f.number_field :priority, in: 0..10, class: 'form-control'
 
-  = f.label :price
-  = f.text_field :price
-  
-  = f.label :owned
-  = f.check_box :owned
-  
-  = f.label :description
-  = f.text_area :description, size: "60x12"
+  .form-group  
+    = f.label :price  
+    .input-group
+      = f.text_field :price, class: 'form-control'
+      .input-group-addon= t('number.currency.format.unit')
 
-  = f.submit
+  .checkbox
+    = f.label :owned do
+      = f.check_box :owned #, class: 'form-control'
+      = t('activerecord.attributes.wish.owned')
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, size: "60x12", class: 'form-control'
+
+  .btn-group
+    = link_to t('forms.buttons.cancel'), @wish.new_record? ? wishes_path : @wish, class: 'btn'
+    = f.submit class: "btn btn-default"

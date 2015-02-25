@@ -1,12 +1,21 @@
-%h1= @wish.title
+%article
+  .btn-group.controls
+    = link_to edit_wish_path(@wish), {class: "btn btn-default btn-xs"} do
+      %span.glyphicon.glyphicon-pencil(aria-hidden="true")
+      = t('forms.buttons.edit')
+    = link_to @wish, method: :delete, data: { confirm: t('forms.messages.confirm') }, class: "btn btn-danger btn-xs" do
+      %span.glyphicon.glyphicon-trash(aria-hidden="true")
+      = t('forms.buttons.delete')
 
-%p= @wish.priority
-%p= @wish.price
+  %h1= @wish.title
+  %p= formatted_date @wish.created_at
 
-%p= @wish.description
+  %p
+    %span.glyphicon.glyphicon-heart(aria-hidden="true")
+    = @wish.priority
 
-%p
-  = link_to t('forms.buttons.edit'), edit_wish_path(@wish)
-  = link_to t('forms.buttons.delete'), wish_path(@wish), method: :delete, data: { confirm: t('forms.messages.confirm') } 
+  %p= number_to_currency @wish.price
+
+  %p= simple_format @wish.description
 
 = link_to t('forms.buttons.back'), wishes_path
