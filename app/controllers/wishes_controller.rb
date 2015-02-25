@@ -45,11 +45,10 @@ class WishesController < ApplicationController
     #   flash.keep :notice
     #   # render js: "window.location = #{your_path}"
     # end
-    respond_to do |format|
-      owned = not(@wish.owned)
-      if @wish.update owned: owned
+    respond_to do |format|      
+      if @wish.toggle_owned #update owned: owned
         
-        @wishlist = if owned
+        @wishlist = if @wish.owned?
           Wish.all.not_owned
         else
           Wish.all.owned
@@ -58,8 +57,8 @@ class WishesController < ApplicationController
         format.html { redirect_to @wish, notice: t('forms.messages.success') }
         format.js
       else
-        redirect_to @wish, alert: t(:error)
-        # format.html { render :edit, status: 422 } 
+        # redirect_to @wish, alert: t(:error)
+        format.html { redirect_to @wish, alert: t(:error) } 
       end
     end
   end

@@ -4,7 +4,7 @@
   
   = # link_to t('forms.buttons.owned'), toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned'
   = link_to toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned' do
-    %span.glyphicon(aria-hidden="true" class="#{owned_wishes_page? ? 'glyphicon-star-empty' : 'glyphicon-star'}")    
+    %span.glyphicon(aria-hidden="true" class="#{wish.owned? ? 'glyphicon-star-empty' : 'glyphicon-star'}")    
     = t('forms.buttons.owned')
 
   %hr
