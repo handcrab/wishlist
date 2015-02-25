@@ -10,6 +10,7 @@
   %h1= @wish.title
   %p= formatted_date @wish.created_at
 
+  = image_tag @wish.picture.url(:medium)
   %p
     %span.glyphicon.glyphicon-heart(aria-hidden="true")
     = @wish.priority

@@ -93,4 +93,9 @@ RSpec.describe Wish, type: :model do
       # expect(wish).not_to be_owned
     end
   end
+
+  describe 'picture' do
+    it { should respond_to :picture }
+    # it { should validate_presence_of :picture }    
+  end
 end

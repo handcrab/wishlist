@@ -11,6 +11,7 @@ ru:
         priority: 'Приоритет'
         price: 'Цена'
         owned: 'Исполнено'
+        picture: 'Обложка'
   forms:
     messages:
       success: "Операция прошла успешно!"
