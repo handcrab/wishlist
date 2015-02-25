@@ -1,0 +1,1167 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"attr",
+				"attributes_for"
+			],
+			[
+				"valid",
+				"valid_attributes"
+			],
+			[
+				"re",
+				"respond_with"
+			],
+			[
+				"des",
+				"delete_request"
+			],
+			[
+				"rs",
+				"respond_with"
+			],
+			[
+				"buil",
+				"build_stubbed"
+			],
+			[
+				"bui",
+				"build_stubbed"
+			],
+			[
+				"at",
+				"attributes_for"
+			],
+			[
+				"redi",
+				"redirect"
+			],
+			[
+				"wish",
+				"wish"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"wishe",
+				"wishes_path"
+			],
+			[
+				"sho",
+				"should"
+			],
+			[
+				"do",
+				"do"
+			],
+			[
+				"st",
+				"stub"
+			],
+			[
+				"invalid",
+				"invalid_wish"
+			],
+			[
+				"vowel",
+				"vowels_pattern"
+			],
+			[
+				"S",
+				"STATIC_NAMES"
+			],
+			[
+				"is_",
+				"is_empty"
+			],
+			[
+				"las",
+				"last_chars"
+			],
+			[
+				"new",
+				"new_word"
+			],
+			[
+				"Re",
+				"RegExp"
+			],
+			[
+				"vovel",
+				"vovels_pattern"
+			],
+			[
+				"last",
+				"last_chars"
+			],
+			[
+				"is",
+				"is_vowel"
+			],
+			[
+				"node",
+				"nodeValue"
+			],
+			[
+				"wo",
+				"word_index"
+			],
+			[
+				"wor",
+				"word"
+			],
+			[
+				"psot",
+				"post_path"
+			],
+			[
+				"comme",
+				"comment_params"
+			],
+			[
+				"co",
+				"comments"
+			],
+			[
+				"se",
+				"set_post"
+			],
+			[
+				"pos",
+				"posts"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "spec/controllers/wishes_controller_spec.rb",
+			"settings":
+			{
+				"buffer_size": 9131,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/wishes_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1768,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/handcrab/_projects/dummy/app/controllers/posts_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1800,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "features/own_wish.feature",
+			"settings":
+			{
+				"buffer_size": 1514,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "features/step_definitions/wish_steps.rb",
+			"settings":
+			{
+				"buffer_size": 7832,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/wish.rb",
+			"settings":
+			{
+				"buffer_size": 660,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/wishes/_wish.html.haml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/handcrab/_projects/cuke_examples/book/book_steps.rb",
+			"settings":
+			{
+				"buffer_size": 1513,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 117.0,
+		"selected_items":
+		[
+			[
+				"haml",
+				"Set Syntax: Ruby Haml"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ry",
+				"Set Syntax: Ruby"
+			],
+			[
+				"Snippet: ",
+				"Snippet: form_for"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"coffe",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript (Rails)"
+			],
+			[
+				"pick",
+				"Color Picker"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"set s",
+				"Set Syntax: Sass"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"termi",
+				"Preferences: Terminal Settings – Default"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 458.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/handcrab/_projects/wishlist",
+		"/home/handcrab/_projects/wishlist/app",
+		"/home/handcrab/_projects/wishlist/app/views",
+		"/home/handcrab/_projects/wishlist/app/views/layouts",
+		"/home/handcrab/_projects/wishlist/app/views/wishes",
+		"/home/handcrab/_projects/wishlist/features",
+		"/home/handcrab/_projects/wishlist/features/step_definitions",
+		"/home/handcrab/_projects/wishlist/spec",
+		"/home/handcrab/_projects/wishlist/spec/controllers",
+		"/home/handcrab/_projects/wishlist/spec/factories",
+		"/home/handcrab/_projects/wishlist/spec/models"
+	],
+	"file_history":
+	[
+		"/usr/share/applications/jetbrains-rubymine.desktop",
+		"/usr/share/applications/intellij.desktop",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/update.coffee",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/index.html.haml",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/_wish.html.haml",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/_wishlist.html.haml",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/index.coffee",
+		"/home/handcrab/_projects/wishlist/config/locales/ru.yml",
+		"/home/handcrab/_projects/wishlist/config/routes.rb",
+		"/home/handcrab/_projects/wishlist/spec/models/wish_spec.rb",
+		"/home/handcrab/_projects/wishlist/spec/factories/wish_factory.rb",
+		"/home/handcrab/_projects/wishlist/db/migrate/20150217100852_add_default_to_priority_to_wish.rb",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/show.html.haml",
+		"/home/handcrab/_projects/wishlist/db/migrate/20150217102950_add_owned_to_wishes.rb",
+		"/home/handcrab/_projects/wishlist/app/models/wish.rb",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/edit.html.haml",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/new.html.haml",
+		"/home/handcrab/_projects/dummy/features/manage_posts.feature",
+		"/home/handcrab/_projects/wishlist/app/views/wishes/_form.html.haml",
+		"/home/handcrab/_projects/wishlist/features/step_definitions/wish_steps.rb",
+		"/home/handcrab/_projects/wishlist/db/migrate/20150217102900_add_owned_to_wishes.rb",
+		"/home/handcrab/_projects/wishlist/features/edit_wish.feature",
+		"/home/handcrab/_projects/wishlist/config/environment.rb",
+		"/home/handcrab/_projects/wishlist/db/schema.rb",
+		"/home/handcrab/_projects/wishlist/db/migrate/20150214211907_create_wishes.rb",
+		"/home/handcrab/_projects/wishlist/config/initializers/mime_types.rb",
+		"/home/handcrab/_projects/wishlist/features/create_wish.feature",
+		"/home/handcrab/_projects/wishlist/config/locales/en.yml",
+		"/home/handcrab/_projects/cuke_examples/controller_spec.rb",
+		"/home/handcrab/_projects/dummy/config/application.rb",
+		"/home/handcrab/_projects/wishlist/Gemfile",
+		"/home/handcrab/_projects/wishlist/Guardfile",
+		"/home/handcrab/_projects/dummy/Gemfile",
+		"/home/handcrab/_projects/wishlist/app/views/layouts/application.html.haml",
+		"/home/handcrab/_projects/wishlist/config/application.rb",
+		"/home/handcrab/_projects/wishlist/Gemfile.lock",
+		"/home/handcrab/_projects/wishlist/config/initializers/filter_parameter_logging.rb",
+		"/home/handcrab/_projects/wishlist/app/helpers/application_helper.rb",
+		"/home/handcrab/_projects/wishlist/app/controllers/application_controller.rb",
+		"/home/handcrab/_projects/wishlist/app/assets/javascripts/application.js",
+		"/home/handcrab/_projects/avito_rss/Gemfile",
+		"/home/handcrab/_projects/cuke_examples/book/books_controller_spec.rb",
+		"/home/handcrab/_projects/blg/app/views/posts/show.html.haml",
+		"/home/handcrab/_projects/wishlist/features/delete_wish.feature",
+		"/home/handcrab/_projects/cuke_examples/reader/reader_steps.rb",
+		"/home/handcrab/_projects/wishlist/features/view_wishes.feature",
+		"/home/handcrab/_projects/blg/app/controllers/posts_controller.rb",
+		"/media/handcrab/cloudbox/Dropbox/dev/Ruby RoR/BDD_tdd_ruby.md",
+		"/home/handcrab/_projects/wishlist/spec/controllers/wishes_controller_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/book/books.feature",
+		"/home/handcrab/_projects/wishlist/public/robots.txt",
+		"/home/handcrab/_projects/wishlist/spec/spec_helper.rb",
+		"/home/handcrab/_projects/cuke_examples/reader/readers_controller_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader/reader_spec.rb",
+		"/home/handcrab/_projects/wishlist/spec/rails_helper.rb",
+		"/home/handcrab/_projects/cuke_examples/sessions_controller_spec.rb",
+		"/home/handcrab/_projects/wishlist/Rakefile",
+		"/home/handcrab/_projects/cuke_examples/books.feature",
+		"/home/handcrab/_projects/cuke_examples/book_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/book_steps.rb",
+		"/home/handcrab/_projects/cuke_examples/books_controller_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/readers_controller_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_mailer_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/book_show.html.haml_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/application_controller_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/display_books.feature",
+		"/home/handcrab/_projects/wishlist/app/controllers/wishes_controller.rb",
+		"/home/handcrab/_projects/cuke_examples/login_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_steps.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_authentication.feature",
+		"/home/handcrab/_projects/cuke_examples/application_helper_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/session_new.html.erb_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_registration.feature",
+		"/home/handcrab/_projects/cuke_examples/reader.feature",
+		"/home/handcrab/_projects/cuke_examples/top_menu.feature",
+		"/home/handcrab/_projects/cuke_examples/new.html.erb_spec.rb",
+		"/home/handcrab/_projects/cuke_examples/reader_refistration.feature",
+		"/home/handcrab/_projects/wishlist/bin/setup",
+		"/home/handcrab/_projects/wishlist/config/initializers/inflections.rb",
+		"/home/handcrab/_projects/wishlist/features/step_definitions/.gitkeep",
+		"/home/handcrab/_projects/wishlist/tmp/cache/assets/development/sprockets/f2c54005fcfb8da585e463c4b3f939e0",
+		"/home/handcrab/_projects/wishlist/config/environments/development.rb",
+		"/home/handcrab/_projects/wishlist/config/initializers/session_store.rb",
+		"/home/handcrab/_projects/blg/app/controllers/pages_controller.rb",
+		"/home/handcrab/_projects/wishlist/spec/helpers/wishes_helper_spec.rb",
+		"/home/handcrab/_projects/blg/app/views/posts/_form.html.haml",
+		"/home/handcrab/_projects/blg/app/views/layouts/application.html.haml",
+		"/home/handcrab/_projects/wishlist/app/views/layouts/application.html.erb",
+		"/home/handcrab/_projects/wishlist/app/models/.keep",
+		"/home/handcrab/_projects/saas1/cuke rus /features/addition.feature",
+		"/home/handcrab/_projects/saas1/cuke rus /calculator.rb",
+		"/home/handcrab/_projects/wishlist/features/support/env.rb",
+		"/home/handcrab/_projects/wishlist/app/controllers/wish_controller.rb",
+		"/home/handcrab/_projects/wishlist/features/wishlist.feature",
+		"/home/handcrab/_projects/blg/Gemfile",
+		"/home/handcrab/_projects/blg/app/controllers/application_controller.rb",
+		"/home/handcrab/_projects/blg/app/views/pages/about.html.haml",
+		"/home/handcrab/_projects/blg/app/assets/stylesheets/application.css.scss",
+		"/home/handcrab/_projects/blg/vendor/assets/javascripts/underscore-min.js",
+		"/home/handcrab/_projects/linksvote/app/views/layouts/application.html.haml",
+		"/home/handcrab/_projects/blg/app/views/comments/_comment.html.haml",
+		"/home/handcrab/_projects/blg/app/models/comment.rb",
+		"/home/handcrab/_projects/blg/app/controllers/comments_controller.rb",
+		"/home/handcrab/_projects/blg/config/environments/development.rb",
+		"/home/handcrab/_projects/blg/log/development.log",
+		"/home/handcrab/_projects/blg/db/development.sqlite3",
+		"/home/handcrab/_projects/blg/config/database.yml",
+		"/home/handcrab/_projects/blg/config/initializers/backtrace_silencers.rb",
+		"/home/handcrab/_projects/blg/app/helpers/application_helper.rb",
+		"/home/handcrab/_projects/blg/app/assets/javascripts/pages.coffee",
+		"/home/handcrab/_projects/blg/config/routes.rb",
+		"/home/handcrab/_projects/blg/app/views/comments/_form.html.haml",
+		"/home/handcrab/_projects/blg/app/models/post.rb",
+		"/home/handcrab/_projects/blg/README.rdoc",
+		"/home/handcrab/_projects/blg/db/migrate/20150213174603_create_comments.rb",
+		"/home/handcrab/_projects/blg/db/migrate/20150213151435_create_posts.rb",
+		"/home/handcrab/_projects/blg/config/initializers/mime_types.rb",
+		"/home/handcrab/_projects/linksvote/app/controllers/links_controller.rb",
+		"/home/handcrab/_projects/blg/app/models/.keep",
+		"/home/handcrab/_projects/blg/test/fixtures/posts.yml",
+		"/home/handcrab/_projects/blg/app/views/posts/index.html.haml",
+		"/home/handcrab/_projects/blg/config/initializers/filter_parameter_logging.rb",
+		"/home/handcrab/_projects/blg/app/assets/javascripts/application.js",
+		"/home/handcrab/_projects/blg/app/assets/stylesheets/aplication.css.scss",
+		"/home/handcrab/_projects/blg/app/assets/stylesheets/_normalize.css.scss",
+		"/home/handcrab/_projects/blg/app/views/posts/new.html.haml",
+		"/home/handcrab/_projects/blg/app/views/posts/update.html.haml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"href",
+			"click",
+			"я снова должен оказаться",
+			"wish_path",
+			"каз",
+			"raise",
+			"step",
+			"сообщ",
+			"redire",
+			"end",
+			"count",
+			"given",
+			"Given",
+			"given",
+			"then",
+			" save",
+			"post",
+			"delet",
+			"put",
+			"erro",
+			"bdd",
+			"rails",
+			"vovel",
+			"alert",
+			"back",
+			"[{};]"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"vowel",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "spec/controllers/wishes_controller_spec.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8582,
+								8582
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/controllers/wishes_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								598,
+								598
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/handcrab/_projects/dummy/app/controllers/posts_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								910,
+								910
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "features/own_wish.feature",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								830,
+								830
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/Cucumber/Cucumber Plain Text Feature.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "features/step_definitions/wish_steps.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7590,
+								7590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3821.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/models/wish.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								649,
+								649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/wishes/_wish.html.haml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/handcrab/_projects/cuke_examples/book/book_steps.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								825,
+								825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 302.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "wishlist.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"ru",
+				"config/locales/ru.yml"
+			],
+			[
+				"modl",
+				"app/models/wish.rb"
+			],
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"fact",
+				"spec/factories/wish_factory.rb"
+			],
+			[
+				"mowis",
+				"app/models/wish.rb"
+			],
+			[
+				"wiste",
+				"features/step_definitions/wish_steps.rb"
+			],
+			[
+				"mig",
+				"db/migrate/20150217102900_add_owned_to_wishes.rb"
+			],
+			[
+				"edit",
+				"features/edit_wish.feature"
+			],
+			[
+				"sche",
+				"db/schema.rb"
+			],
+			[
+				"migr",
+				"db/migrate/20150217100852_add_default_to_priority_to_wish.rb"
+			],
+			[
+				"modelwi",
+				"app/models/wish.rb"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"local",
+				"config/locales/en.yml"
+			],
+			[
+				"appl",
+				"app/views/layouts/application.html.haml"
+			],
+			[
+				"applica",
+				"config/application.rb"
+			],
+			[
+				"feat",
+				"features/delete_wish.feature"
+			],
+			[
+				"show",
+				"app/views/wishes/show.html.haml"
+			],
+			[
+				"rou",
+				"config/routes.rb"
+			],
+			[
+				"rout",
+				"config/routes.rb"
+			],
+			[
+				"cont",
+				"spec/controllers/wishes_controller_spec.rb"
+			],
+			[
+				"wi",
+				"app/controllers/wishes_controller.rb"
+			],
+			[
+				"wisc",
+				"app/controllers/wishes_controller.rb"
+			],
+			[
+				"view",
+				"features/view_wishes.feature"
+			],
+			[
+				"fac",
+				"spec/factories/wish_factory.rb"
+			],
+			[
+				"fea",
+				"features/create_wish.feature"
+			],
+			[
+				"modwi",
+				"app/models/wish.rb"
+			],
+			[
+				"contr",
+				"app/controllers/wishes_controller.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"step",
+				"features/step_definitions/wish_steps.rb"
+			],
+			[
+				"wiscont",
+				"app/controllers/wishes_controller.rb"
+			],
+			[
+				"defin",
+				"features/step_definitions/wish_steps.rb"
+			],
+			[
+				"wish",
+				"app/models/wish.rb"
+			],
+			[
+				"wiscon",
+				"app/controllers/wishes_controller.rb"
+			],
+			[
+				"apphaml",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"mode",
+				"app/models/wish.rb"
+			],
+			[
+				"new",
+				"app/views/wishes/new.html.haml"
+			],
+			[
+				"wic",
+				"app/controllers/wish_controller.rb"
+			],
+			[
+				"ro",
+				"config/routes.rb"
+			],
+			[
+				"appcs",
+				"app/assets/stylesheets/application.css.scss"
+			],
+			[
+				"apcss",
+				"app/assets/stylesheets/application.css.scss"
+			],
+			[
+				"appha",
+				"app/views/layouts/application.html.haml"
+			],
+			[
+				"commec",
+				"app/controllers/comments_controller.rb"
+			],
+			[
+				"contrpos",
+				"app/controllers/posts_controller.rb"
+			],
+			[
+				"deve",
+				"config/environments/development.rb"
+			],
+			[
+				"ab",
+				"app/views/pages/about.html.haml"
+			],
+			[
+				"abou",
+				"app/views/pages/about.html.haml"
+			],
+			[
+				"app",
+				"app/views/layouts/application.html.haml"
+			],
+			[
+				"pagec",
+				"app/controllers/pages_controller.rb"
+			],
+			[
+				"comcont",
+				"app/controllers/comments_controller.rb"
+			],
+			[
+				"_for",
+				"app/views/comments/_form.html.haml"
+			],
+			[
+				"postsho",
+				"app/views/posts/show.html.haml"
+			],
+			[
+				"contcom",
+				"app/controllers/comments_controller.rb"
+			],
+			[
+				"res",
+				"config/routes.rb"
+			],
+			[
+				"mopos",
+				"app/models/post.rb"
+			],
+			[
+				"post",
+				"app/views/posts/show.html.haml"
+			],
+			[
+				"comm",
+				"app/models/comment.rb"
+			],
+			[
+				"mit",
+				"db/migrate/20150213174603_create_comments.rb"
+			],
+			[
+				"modepo",
+				"app/models/post.rb"
+			],
+			[
+				"apph",
+				"app/views/layouts/application.html.haml"
+			],
+			[
+				"appscs",
+				"app/assets/stylesheets/application.css.scss"
+			],
+			[
+				"postcon",
+				"app/controllers/posts_controller.rb"
+			],
+			[
+				"postin",
+				"~/_projects/blg/app/views/posts/index.html.haml"
+			],
+			[
+				"inde",
+				"app/views/posts/index.html.haml"
+			],
+			[
+				"postsh",
+				"app/views/posts/show.html.haml"
+			],
+			[
+				"postnew",
+				"app/views/posts/new.html.haml"
+			],
+			[
+				"linkcon",
+				"app/controllers/links_controller.rb"
+			],
+			[
+				"linkscon",
+				"app/controllers/links_controller.rb"
+			],
+			[
+				"index",
+				"app/views/links/index.html.haml"
+			],
+			[
+				"user",
+				"app/models/user.rb"
+			],
+			[
+				"linkcont",
+				"app/controllers/links_controller.rb"
+			],
+			[
+				"appli",
+				"app/controllers/application_controller.rb"
+			],
+			[
+				"allicon",
+				"app/controllers/links_controller.rb"
+			],
+			[
+				"contlink",
+				"app/controllers/links_controller.rb"
+			],
+			[
+				"contrcomm",
+				"app/controllers/comments_controller.rb"
+			],
+			[
+				"linksshow",
+				"app/views/links/show.html.haml"
+			],
+			[
+				"linksinde",
+				"app/views/links/index.html.haml"
+			],
+			[
+				"rots",
+				"config/routes.rb"
+			],
+			[
+				"modlin",
+				"app/models/link.rb"
+			],
+			[
+				"applerb",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"appsj",
+				"app/assets/javascripts/application.js"
+			],
+			[
+				"gemf",
+				"Gemfile"
+			],
+			[
+				"viewlinkin",
+				"app/views/links/index.html.erb"
+			],
+			[
+				"molin",
+				"app/models/link.rb"
+			],
+			[
+				"modeuser",
+				"app/models/user.rb"
+			],
+			[
+				"appv",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"confenvde",
+				"config/environments/development.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 214.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

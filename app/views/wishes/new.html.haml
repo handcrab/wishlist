@@ -1,24 +1,3 @@
 %h1= t 'wishes.new.title'
 
-= form_for @wish do |f|
-
-  - if @wish.errors.any?
-    #errors
-      %h2= t 'errors.template.header', model: t('activerecord.models.wish'), count: @wish.errors.count
-      %ul
-        - @wish.errors.full_messages.each do |msg|
-          %li= msg
-
-  = f.label :title
-  = f.text_field :title
-
-  = f.label :priority
-  = f.number_field :priority, in: 0..10
-
-  = f.label :price
-  = f.number_field :price
-
-  = f.label :description
-  = f.text_area :description, size: "60x12"
-
-  = f.submit
+= render 'form'

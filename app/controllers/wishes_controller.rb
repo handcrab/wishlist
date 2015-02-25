@@ -25,17 +25,33 @@ class WishesController < ApplicationController
   end
 
   def index
-    @wishes = Wish.all
+    @wishes = Wish.all.not_owned
   end
 
   def edit
   end
 
   def update
-    if @wish.update wish_params
-      redirect_to @wish, notice: t('forms.messages.success')
-    else
-      render :edit, status: 422
+    # if request.xhr?
+    #   flash[:notice] = t 'forms.messages.success'
+    #   flash.keep :notice
+    #   # render js: "window.location = #{your_path}"
+    # end
+
+    respond_to do |format|
+      if @wish.update wish_params       
+        @wishlist = if wish_params[:owned] == 'true'
+          Wish.all.not_owned
+        else
+          Wish.all.owned
+        end
+
+        # flash.now[:notice] = t('forms.messages.success')
+        format.html { redirect_to @wish, notice: t('forms.messages.success') }
+        format.js
+      else
+        format.html { render :edit, status: 422 } 
+      end
     end
   end
 
@@ -44,9 +60,14 @@ class WishesController < ApplicationController
     redirect_to wishes_path, notice: t('forms.messages.success')
   end
 
+  def owned
+    @wishes = Wish.all.owned
+    render :index
+  end
+
   private
   def wish_params
-    params.require(:wish).permit(:title, :priority, :price, :description)
+    params.require(:wish).permit(:title, :priority, :price, :description, :owned)
   end
 
   def set_wish
