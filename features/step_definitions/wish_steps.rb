@@ -61,11 +61,11 @@ end
 
 То(/^я должен увидеть сообщение об ([^\s]+)$/) do |message|
   case message
-  when /ошиб/
-    expect(page).to have_content /error|ошиб/i # TODO: /"#{I18n.t :error}"/i
-  when /успе/
-    expect(page).to have_content I18n.t('forms.messages.success') # /succ/i
-  end
+    when /ошиб/
+      expect(page).to have_content /error|ошиб/i # TODO: /"#{I18n.t :error}"/i
+    when /успе/
+      expect(page).to have_content I18n.t('forms.messages.success') # /succ/i
+    end
 end
 
 То(/^я снова должен оказаться на странице (.*)$/) do |wish_page|
@@ -129,8 +129,12 @@ end
   # find("a", :text => "berlin")
 end
 
-Допустим(/^у меня есть желание с названием "(.*?)"$/) do |title|
-  @iphone = Wish.create! FactoryGirl.attributes_for :iphone
+Допустим(/^у меня есть ([^\s]*\s)?желание с названием "(.*?)"$/) do |is_owned, title|
+  @iphone = if is_owned =~ /исполненное/i
+    Wish.create! FactoryGirl.attributes_for :owned_iphone
+  else
+    Wish.create! FactoryGirl.attributes_for :iphone
+  end
 end
 
 Если(/^я перехожу на страницу с этим желанием$/) do
@@ -198,3 +202,50 @@ end
 То(/^я должен оказаться на главной странице$/) do
   expect(current_path).to eq wishes_path
 end
+
+Если(/^я помечаю желание как исполненное$/) do
+  #fill_in 'wish_price', with: @iphone[:price] 
+  page.check('wish_owned')
+  click_button find(:css, 'input[type="submit"]').value
+  # pending # express the regexp above with the code you wish you had
+end
+
+То(/^это желание не должно отображаться на главной$/) do
+  visit root_path
+  expect(page).not_to have_content @iphone.title
+end
+
+
+
+# Допустим(/^у меня есть исполненное желание с названием "(.*?)"$/) do |arg1|
+#   pending # express the regexp above with the code you wish you had
+# end
+
+Если(/^перехожу на страницу с иполненными желаниями$/) do
+  visit owned_wishes_path
+  # pending # express the regexp above with the code you wish you had
+end
+
+То(/^я должен увидеть это желание в списке$/) do
+  expect(page).to have_content @iphone.title
+end
+
+
+Если(/^я нажимаю на кнопку 'Получено' напротив желания$/) do
+  # pending # express the regexp above with the code you wish you had
+  # click_button find(:css, "a[href='submit']").value
+  # find_link @notebook.title, href: wish_path(@notebook)
+
+  # find_button('Dashboard')['class'].have_content "disabled"
+  
+  # find(:css, "a[href^='#{wish_path @iphone}']").find(:text => 'Quox')
+  # find( "a[href^='#{wish_path @iphone}']") { I18n.t('forms.buttons.owned') }
+  
+  # click_link I18n.t('forms.buttons.owned')
+  find("a.owned[href^='#{wish_path @iphone}']").click
+
+  # img[src^='https://www.example.com/image']
+  # click_link I18n.t('forms.buttons.owned'), href: /#{wish_path(@iphone)}/
+  # click_button find(:css, 'input[type="submit"]').value 
+end
+

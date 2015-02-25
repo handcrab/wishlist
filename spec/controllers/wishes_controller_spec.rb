@@ -27,17 +27,27 @@ RSpec.describe WishesController, type: :controller do
     end
   end
   #______
-  describe "#index" do    
-    let!(:wishes) { [iphone, notebook] } 
+  describe "#index" do
+    #     ?????
+    # let!(:wishes) { [iphone, notebook] } # ?? ARelat
     # let!(:wishes) { create_list :wish, 3 }     
+    # let!(:iphone) { Wish.create! attributes_for :iphone }
+    # let!(:wishes) { Wish.all }     
+
     before(:each) do
-      allow(Wish).to receive(:all).and_return wishes #[valid_wish]
+      # allow(Wish).to receive(:all).and_return wishes #[valid_wish]
+      Wish.stub_chain(:all, :not_owned).and_return [iphone]
       get :index
     end
 
-    it "assigns @wishes" do # all wishes
-      expect(assigns[:wishes]).to match_array wishes
-      # expect(assigns[:wishes]).to include(iphone) #.not_to be_nil
+    it 'sends :all message to Wish class' do
+      expect(Wish).to receive :all
+      get :index      
+    end
+
+    it "assigns @wishes" do # all wishes      
+      # expect(assigns[:wishes]).to match_array wishes
+      expect(assigns[:wishes]).to include iphone #.not_to be_nil
     end    
     it { respond_with :succes }
     it { render_template :index }
@@ -256,5 +266,27 @@ RSpec.describe WishesController, type: :controller do
       end
       # it { respond_with :not_found }      
     end
+  end
+
+  describe '#owned' do
+    before(:each) do
+      # allow(Wish).to receive(:all).and_return wishes #[valid_wish]
+      # Wish.stub_chain(:all, :owned) #.and_return [iphone]
+      allow(Wish).to receive_message_chain(:all, :owned)
+      get :owned
+    end
+
+    it 'sends :all message to Wish class' do
+      # expect(Wish).to receive :all
+      expect(Wish).to receive_message_chain(:all, :owned)
+      get :owned      
+    end
+
+    # it "assigns @wishes" do # all wishes      
+    #   # expect(assigns[:wishes]).to match_array wishes
+    #   expect(assigns[:wishes]).to include iphone #.not_to be_nil
+    # end    
+    it { respond_with :succes }
+    it { render_template :index }
   end
 end

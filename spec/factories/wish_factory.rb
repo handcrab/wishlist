@@ -27,6 +27,14 @@ FactoryGirl.define do
       description 'нужен для получения юзер-экспериенса'   
     end
 
+    factory :owned_iphone do
+      title 'айфон'
+      price '30000'
+      priority '2' 
+      owned 'true'
+      description 'нужен для получения юзер-экспериенса'   
+    end
+
     factory :notebook do
       title 'Notebook'
       price ' 20000'

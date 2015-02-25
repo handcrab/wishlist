@@ -68,4 +68,9 @@ RSpec.describe Wish, type: :model do
     it { should be_valid }
     its(:priority) { should == 0 }
   end
+
+  describe 'owned' do
+    it { should respond_to :owned }
+    it { should_not be_owned }
+  end
 end
