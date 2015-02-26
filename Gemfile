@@ -74,3 +74,5 @@ group :development, :test do
   # spring stop
   # time spring rspec
 end
+
+gem 'simplecov', require: false, group: :test
