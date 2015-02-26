@@ -1,12 +1,15 @@
 class WishesController < ApplicationController
-  before_action :set_wish, only: [:update, :toggle_owned, :toggle_public, :edit, :destroy]
+  # before_action :set_wish, only: [:update, :toggle_owned, :toggle_public, :edit, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_user, only: [:edit, :update, :toggle_owned, :toggle_public, :destroy]
 
   def new
-    @wish = Wish.new
+    @wish = current_user.wishes.build #Wish.new
   end
 
   def create
-    @wish = Wish.new wish_params
+    # @wish = Wish.new wish_params
+    @wish = current_user.wishes.build wish_params
     if @wish.save
       redirect_to @wish, notice: t('forms.messages.success') #, status: :created  
     else
@@ -16,10 +19,16 @@ class WishesController < ApplicationController
   end
 
   def show
-    begin     
-      @wish = Wish.find params[:id]
+    begin    
+      wish = Wish.find params[:id]  
+      if current_user == wish.user
+        @wish = wish
+      else
+        @wish = Wish.published.find params[:id]
+      end      
+      # @wish = Wish.find params[:id]
     rescue ActiveRecord::RecordNotFound
-      redirect_to wishes_path, status: 301, 
+      redirect_to root_path, status: 301, 
         flash: { error: t('forms.messages.not_found')}
     end
   end
@@ -49,16 +58,18 @@ class WishesController < ApplicationController
       if @wish.toggle_owned #update owned: owned
         
         @wishlist = if @wish.owned?
-          Wish.all.not_owned
+          #Wish.all.not_owned
+          current_user.wishes.not_owned
         else
-          Wish.all.owned
+          current_user.wishes.owned
+          #Wish.all.owned
         end
 
         format.html { redirect_to @wish, notice: t('forms.messages.success') }
         format.js
       else
-        # redirect_to @wish, alert: t(:error)
         format.html { redirect_to @wish, alert: t(:error) } 
+        # format.js { render text: e.message, status: 403 }
       end
     end
   end
@@ -73,16 +84,18 @@ class WishesController < ApplicationController
 
   def destroy
     @wish.destroy
-    redirect_to wishes_path, notice: t('forms.messages.success')
+    redirect_to all_wishes_path, notice: t('forms.messages.success')
   end
 
   def owned
-    @wishes = Wish.all.owned
+    @wishes = current_user.wishes.owned
+    #Wish.all.owned
     render :index
   end
 
   def all
-    @wishes = Wish.all
+    @wishes = current_user.wishes
+    #Wish.all
     render :index
   end
 
@@ -92,7 +105,12 @@ class WishesController < ApplicationController
       :description, :owned, :picture, :public
   end
 
-  def set_wish
-    @wish = Wish.find params[:id]
+  # def set_wish
+  #   @wish = Wish.find params[:id]
+  # end
+
+  def authorize_user
+    @wish = current_user.wishes.find_by id: params[:id]
+    redirect_to root_path, notice: 'Not authorized' unless @wish
   end
 end

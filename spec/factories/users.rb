@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    factory :vasia do    
+    factory :vasia do
+      # attrs = {name: 'Вася Пупкин', email: 'vasia@lol.ka', password: '12345678'}
       name 'Вася Пупкин'
       email 'vasia@lol.ka'
       password '12345678'

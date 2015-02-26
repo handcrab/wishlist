@@ -10,15 +10,15 @@
     %nav.navbar.navbar-default      
       .container 
         .navbar-header
-          = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'        
+          = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'       
 
         %ul.nav.navbar-nav
+          %li{ class: "#{'active' if all_wishes_page?}" }
+            = link_to t('menu.all_wishes'), all_wishes_path 
           %li{ class: "#{'active' if owned_wishes_page?}" }
             = link_to owned_wishes_path do
               %span.glyphicon.glyphicon-star(aria-hidden="true")
               = t('menu.owned_wishes')
-          %li{ class: "#{'active' if all_wishes_page?}" }
-            = link_to t('menu.all_wishes'), all_wishes_path 
 
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?

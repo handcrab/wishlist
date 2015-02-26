@@ -63,22 +63,22 @@ end
 
 То(/^я должен увидеть сообщение об ([^\s]+)$/) do |message|
   case message
-    when /ошиб/
-      expect(page).to have_content /error|ошиб/i # TODO: /"#{I18n.t :error}"/i
-    when /успе/
-      expect(page).to have_content I18n.t('forms.messages.success') # /succ/i
-    end
+  when /ошиб/
+    expect(page).to have_content /error|ошиб/i # TODO: /"#{I18n.t :error}"/i
+  when /успе/
+    expect(page).to have_content I18n.t('forms.messages.success') # /succ/i
+  end
 end
 
 То(/^я снова должен оказаться на странице (.*)$/) do |wish_page|
-  wish_title = case wish_page
+  pg_title = case wish_page
   when /добавления желания/
     I18n.t('wishes.new.title')
   when /редактирования желания/    
     # expect(current_path).to eq edit_wish_path(@iphone)
     I18n.t('wishes.edit.title')
   end
-  expect(page).to have_content wish_title
+  expect(page).to have_content pg_title
 end
 
 # SHOW
@@ -108,8 +108,9 @@ end
   @iphone = FactoryGirl.attributes_for :iphone
   @notebook = FactoryGirl.attributes_for :notebook
   @ram = FactoryGirl.attributes_for :ram
-
-  Wish.create! [@iphone, @notebook, @ram]  
+  # current_user.wishes << [@iphone, @notebook, @ram]
+  @vasya.wishes.create! [@iphone, @notebook, @ram]
+  # Wish.create! [@iphone, @notebook, @ram]  
   expect(Wish.count).to eq count.to_i  
 end
 
@@ -133,12 +134,16 @@ end
 
 Допустим(/^у меня есть ([^\s]*\s)?желание с названием "(.*?)"$/) do |is_owned, title|
   @iphone = if is_owned =~ /исполненное/i
-    Wish.create! FactoryGirl.attributes_for :owned_iphone
+    @vasya.wishes.create! FactoryGirl.attributes_for :owned_iphone
+    # Wish.create! FactoryGirl.attributes_for :owned_iphone
   else
-    Wish.create! FactoryGirl.attributes_for :iphone
+    @vasya.wishes.create! FactoryGirl.attributes_for :iphone
+    # Wish.create! FactoryGirl.attributes_for :iphone
   end
+  # @iphone = @vasya.wishes.last  
 end
 
+# я нахожусь на странице этого желания
 Если(/^я перехожу на страницу с этим желанием$/) do
   visit wish_path @iphone
 end
@@ -174,6 +179,10 @@ end
 То(/^я должен быть перенаправлен на страницу со списком всех желаний$/) do
   expect(current_path).to eq wishes_path  
 end
+То(/^я должен быть перенаправлен на главную страницу$/) do
+  expect(current_path).to eq root_path
+end
+
 
 Допустим(/^я нахожусь на странице редактирования желания "(.*?)"$/) do |title|
   # @iphone = Wish.find_by title: title
@@ -190,7 +199,12 @@ end
   step "я перехожу на страницу с этим желанием"  
 end
 
-Если(/^я нажимаю кнопку "(.*?)"$/) do |button|
+# Если(/^я нажимаю кнопку "(.*?)"$/) do |button|
+#   # expect(current_path).to eq wish_path(@iphone)
+#   click_link I18n.t('forms.buttons.delete')  
+# end
+
+Если(/^я нажимаю кнопку "Удалить"$/) do
   # expect(current_path).to eq wish_path(@iphone)
   click_link I18n.t('forms.buttons.delete')  
 end
@@ -204,6 +218,9 @@ end
 
 То(/^я должен оказаться на главной странице$/) do
   expect(current_path).to eq wishes_path
+end
+То(/^я должен оказаться на странице со всеми желаниями$/) do
+  expect(current_path).to eq all_wishes_path
 end
 
 Если(/^я помечаю желание как исполненное$/) do
@@ -262,6 +279,27 @@ end
   find("a.toggle-public[href^='#{wish_path @iphone}']").click  
 end
 
+
 Если(/^перехожу на страницу со всеми желаниями$/) do
   visit all_wishes_path
+end
+
+Допустим(/^я \- авторизированный пользователь$/) do
+  vasya_attributes = FactoryGirl.attributes_for :vasia
+  @vasya = User.create! vasya_attributes
+  
+  visit new_user_session_path
+
+  fill_in 'user_email', with: vasya_attributes[:email]
+  fill_in 'user_password', with: vasya_attributes[:password]
+  click_button find(:css, 'input[type="submit"]').value
+  
+  # puts body
+  # page.driver.request.env['HTTP_REFERER'].should_not be_nil
+  # expect(page).to have_content I18n.t 'devise.sessions.signed_in'
+  #expect(current_user).not be_nil
+end
+
+Допустим(/^я нахожусь на странице со своими желаниями$/) do
+  step 'перехожу на страницу со всеми желаниями'
 end

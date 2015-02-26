@@ -3,9 +3,11 @@
 # Features
 - Users can add their wihes
   - markdown in a wish discription
-- Users can mark wishes as owned
-- Users can mark wishes as private
+- users can mark their wishes as owned
+- users can mark their wishes as private
+- users can edit only their wishes
 
 # TODO
-- users can edit only their wishes
 - tags
+- comments
+- users can copy other's wishes

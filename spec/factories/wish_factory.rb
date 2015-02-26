@@ -56,5 +56,13 @@ FactoryGirl.define do
       description ''   
     end
 
+    factory :private_wish do
+      title 'носки'
+      price '50'
+      priority '7'
+      public 'false'
+      description ''   
+    end
+
   end
 end
