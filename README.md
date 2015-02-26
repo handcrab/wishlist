@@ -10,4 +10,6 @@
 # TODO
 - tags
 - comments
+- pagination
 - users can copy other's wishes
+- users can filter, hide owned on all_wishes path
