@@ -7,7 +7,6 @@ gem 'rails', '4.2.0'
 # HEROKU
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
-
 gem 'puma'
 
 # Use SCSS for stylesheets
