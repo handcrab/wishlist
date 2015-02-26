@@ -23,9 +23,7 @@
 
   - if @wish.user == current_user
     .btn-group
-      = link_to toggle_owned_wish_path(@wish), method: :patch, remote: true, class: 'owned btn btn-success' do
-        %span.glyphicon(aria-hidden="true" class="#{@wish.owned? ? 'glyphicon-star-empty' : 'glyphicon-star'}")    
-        = t('forms.buttons.owned')
+      = render partial: 'toggle_owned_btn', locals: { wish: @wish, css_class: 'owned btn btn-success' }
       = link_to toggle_public_wish_path(@wish), method: :patch, class: 'toggle-public btn' do
         %span.glyphicon(aria-hidden="true" class="#{@wish.public? ? 'glyphicon-eye-close' : 'glyphicon-eye-open'}")    
         = t('forms.buttons.public')

@@ -515,13 +515,11 @@ RSpec.describe WishesController, type: :controller do
       it 'assigns it to @wish' do 
         patch_request
         expect(assigns[:wish]).to eq old_wish
-      end
-    
-      it 'assigns @wishlist' do 
-        patch_request
-        expect(assigns[:wishlist]).not_to be_nil
-      end
-    
+      end    
+      # it 'assigns @wishlist' do 
+      #   patch_request
+      #   expect(assigns[:wishlist]).not_to be_nil
+      # end    
       it { respond_with :redirect }
       it { redirect_to old_wish } 
       it 'assigns a success flash message' do
@@ -535,10 +533,11 @@ RSpec.describe WishesController, type: :controller do
 
         before(:each) do
           patch_request           
+        end      
+        it 'assigns @wishlist' do 
+          patch_request
+          expect(assigns[:wishlist]).not_to be_nil
         end
-        # it 'assigns @wishlist' do 
-        #   expect(assigns[:wishlist]).not_to be_nil
-        # end
         it 'renders js template' do
           expect(response).to render_template :toggle_owned
         end         

@@ -21,7 +21,7 @@ module ApplicationHelper
     }
     # markdown = Redcarpet::Markdown.new(renderer, extensions = {})
     @markdown ||= Redcarpet::Markdown.new Redcarpet::Render::HTML, opts
-    @markdown.render text
+    @markdown.render text || ''
   end
 
   # def markdown text
