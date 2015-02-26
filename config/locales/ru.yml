@@ -1,9 +1,11 @@
 ru:
   title: Хотелки
   error: Ошибка
+  unhappy: 'Передумали'
   activerecord:
     models:
       wish: 'Желание'
+      user: 'профиль'
     attributes:
       wish:
         title: "Название"
@@ -12,6 +14,13 @@ ru:
         price: 'Цена'
         owned: 'Исполнено'
         picture: 'Обложка'
+      user:
+        name: 'Имя'
+        email: 'Эл. почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        current_password: 'Текущий пароль'
+        remember_me: 'запомнить меня'        
   forms:
     messages:
       success: "Операция прошла успешно!"
@@ -24,10 +33,15 @@ ru:
       cancel: 'Отмена'
       back: 'К списку'
       owned: 'Исполнено'
-      public: 'Опубликовать/Скрыть'
+      public: 'Опубликовать/Скрыть'      
   menu:
     new_wish: 'Добавить желание'
     owned_wishes: 'Исполненные'
+    all_wishes: 'Мои желания'
+    sign_in: 'Вход'
+    sign_up: 'Регистрация'
+    sign_out: 'Выход'
+    user_profile: 'Профиль'
   wishes:
     index:
       title: "Список желаний"
