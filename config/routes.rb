@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :wishes do
     collection do
       get 'owned'
+      get 'all'
     end
     patch 'toggle_owned', on: :member
+    patch 'toggle_public', on: :member
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

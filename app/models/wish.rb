@@ -8,11 +8,13 @@ class Wish < ActiveRecord::Base
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" } 
   #, :default_url: "/images/:style/missing.png"
+  # dependent: :destroy
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   # validates :picture, presence: true
   
   scope :not_owned, -> { where owned: false }
   scope :owned, -> { where.not owned: false }
+  scope :published, -> { where public: true}
 
   def toggle_owned
     self.update owned: not(owned)

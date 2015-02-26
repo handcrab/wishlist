@@ -36,7 +36,7 @@ RSpec.describe WishesController, type: :controller do
 
     before(:each) do
       # allow(Wish).to receive(:all).and_return wishes #[valid_wish]
-      Wish.stub_chain(:all, :not_owned).and_return [iphone]
+      Wish.stub_chain(:all, :published, :not_owned).and_return [iphone]
       get :index
     end
 
@@ -69,6 +69,20 @@ RSpec.describe WishesController, type: :controller do
     it "assigns @wishes" do            
       expect(assigns[:wishes]).to include iphone #.not_to be_nil
     end  
+    it { respond_with :succes }
+    it { render_template :index }
+  end
+
+
+  describe '#all' do
+    before(:each) do             
+      allow(Wish).to receive(:all).and_return []
+      get :all 
+    end
+
+    it "assigns @wishes" do            
+      expect(assigns[:wishes]).not_to be_nil
+    end
     it { respond_with :succes }
     it { render_template :index }
   end
@@ -243,7 +257,27 @@ RSpec.describe WishesController, type: :controller do
       # end      
     end 
   end
+
+
+  describe '#toggle_public' do
+    let!(:old_wish) { create :iphone }
+    let(:patch_request) { patch :toggle_public, id: old_wish.id, format: :html }
+    before(:each) do
+      allow(Wish).to receive(:find).and_return old_wish
+      allow(old_wish).to receive(:update).and_return true 
+      # patch_request      
+    end
+
+    it 'sends :update message to Wish model' do
+      expect(old_wish).to receive(:update)
+      patch_request
+    end
+
+    it { respond_with :redirect }
+    it { redirect_to old_wish }
+  end
   
+
 
   describe '#toggle_owned' do
     let!(:old_wish) { create :owned_iphone }

@@ -252,3 +252,16 @@ end
   # click_button find(:css, 'input[type="submit"]').value 
 end
 
+
+
+Допустим(/^я нахожусь на странице желания "(.*?)"$/) do |title|
+  step "я перехожу на страницу с этим желанием"
+end
+
+Если(/^я помечаю желание как скрытое$/) do
+  find("a.toggle-public[href^='#{wish_path @iphone}']").click  
+end
+
+Если(/^перехожу на страницу со всеми желаниями$/) do
+  visit all_wishes_path
+end
