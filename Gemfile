@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 
 # HEROKU
-# gem 'pg', group: :production
-# gem 'rails_12factor', group: :production
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -82,3 +82,5 @@ group :development, :test do
 end
 
 gem 'simplecov', require: false, group: :test
+
+ruby '2.1.5'
