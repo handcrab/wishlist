@@ -1,5 +1,5 @@
 if $("#wishes").length
-  # index page
+  # index/all wishes page
   $("#wishes").html("<%=j render @wishlist %>")
 else
   # show page

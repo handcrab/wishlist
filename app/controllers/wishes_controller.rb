@@ -57,12 +57,23 @@ class WishesController < ApplicationController
     respond_to do |format|      
       if @wish.toggle_owned #update owned: owned
         
-        @wishlist = if @wish.owned?
-          #Wish.all.not_owned
-          current_user.wishes.not_owned
-        else
-          current_user.wishes.owned
-          #Wish.all.owned
+        if request.xhr?
+          @wishlist = case request.referrer
+          when all_wishes_url
+            current_user.wishes
+          when owned_wishes_url
+            current_user.wishes.owned                     
+            # @wishlist = if @wish.owned?
+            #   #Wish.all.not_owned
+            #   current_user.wishes.not_owned
+            # else
+            #   current_user.wishes.owned
+            #   #Wish.all.owned
+            # end
+          else
+            # request.referrer == root_url
+            Wish.all.published.not_owned 
+          end
         end
 
         format.html { redirect_to @wish, notice: t('forms.messages.success') }
@@ -111,6 +122,8 @@ class WishesController < ApplicationController
 
   def authorize_user
     @wish = current_user.wishes.find_by id: params[:id]
-    redirect_to root_path, notice: 'Not authorized' unless @wish
+
+    msg = t('devise.failure.unauthenticated')
+    redirect_to root_path, alert: msg unless @wish
   end
 end

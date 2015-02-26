@@ -12,8 +12,9 @@
       = #link_to t('forms.buttons.owned'), wish_path(wish, wish: {owned: !wish.owned}), method: :patch, remote: true, class: 'owned'
       
       = # link_to t('forms.buttons.owned'), toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned'
-      %hr
-      = link_to toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned' do
-        %span.glyphicon(aria-hidden="true" class="#{wish.owned? ? 'glyphicon-star-empty' : 'glyphicon-star'}")    
-        = t('forms.buttons.owned')
-      
+
+      - if wish.user == current_user
+        %hr
+        = render partial: 'toggle_owned_btn', locals: { wish: wish, css_class: 'owned' }
+
+        

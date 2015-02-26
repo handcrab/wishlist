@@ -32,6 +32,7 @@ ru:
       delete: "Удалить"
       cancel: 'Отмена'
       back: 'К списку'
+      not_owned: 'Исполнено!'
       owned: 'Исполнено'
       public: 'Опубликовать/Скрыть'      
   menu:
