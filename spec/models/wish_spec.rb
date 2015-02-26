@@ -98,4 +98,10 @@ RSpec.describe Wish, type: :model do
     it { should respond_to :picture }
     # it { should validate_presence_of :picture }    
   end
+
+  describe 'public' do
+    it { should respond_to :public }
+    # default value
+    it { should be_public }
+  end
 end

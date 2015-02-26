@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, only: [:update, :toggle_owned, :edit, :destroy]
+  before_action :set_wish, only: [:update, :toggle_owned, :toggle_public, :edit, :destroy]
 
   def new
     @wish = Wish.new
@@ -25,7 +25,7 @@ class WishesController < ApplicationController
   end
 
   def index
-    @wishes = Wish.all.not_owned
+    @wishes = Wish.all.published.not_owned
   end
 
   def edit
@@ -63,6 +63,14 @@ class WishesController < ApplicationController
     end
   end
 
+  def toggle_public
+    if @wish.update public: not(@wish.public)
+      redirect_to @wish, notice: t('forms.messages.success')
+    else
+      redirect_to @wish, alert: t(:error)
+    end
+  end
+
   def destroy
     @wish.destroy
     redirect_to wishes_path, notice: t('forms.messages.success')
@@ -73,9 +81,15 @@ class WishesController < ApplicationController
     render :index
   end
 
+  def all
+    @wishes = Wish.all
+    render :index
+  end
+
   private
   def wish_params
-    params.require(:wish).permit(:title, :priority, :price, :description, :owned, :picture)
+    params.require(:wish).permit :title, :priority, :price, 
+      :description, :owned, :picture, :public
   end
 
   def set_wish

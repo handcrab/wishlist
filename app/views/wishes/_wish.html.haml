@@ -1,7 +1,10 @@
 .col-md-4
   %article.panel.panel-default.wish  
-    .panel-heading
-      %h1.panel-title= link_to wish.title, wish 
+    .panel-heading      
+      %h1.panel-title
+        - unless wish.public?
+          %span.glyphicon(aria-hidden="true" class="glyphicon-eye-close")    
+        = link_to wish.title, wish 
 
     .panel-body
       = image_tag wish.picture.url(:thumb)
