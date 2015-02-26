@@ -29,11 +29,14 @@ gem 'rails-i18n'
 # gem 'russian'
 
 gem 'bootstrap-sass'
-# gem 'devise'
 gem 'paperclip'
 gem 'redcarpet'
 # gem 'github-markdown', '~> 0.6.8'
 # gem 'github-markup'
+
+gem 'devise'
+gem 'devise-bootstrap-views'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -71,6 +74,3 @@ group :development, :test do
   # spring stop
   # time spring rspec
 end
-
-# group :test do
-# end

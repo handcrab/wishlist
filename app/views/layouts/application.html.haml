@@ -17,8 +17,21 @@
             = link_to owned_wishes_path do
               %span.glyphicon.glyphicon-star(aria-hidden="true")
               = t('menu.owned_wishes')
+          %li{ class: "#{'active' if all_wishes_page?}" }
+            = link_to t('menu.all_wishes'), all_wishes_path 
 
         %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to edit_user_registration_path(current_user) do
+                %span.glyphicon.glyphicon-user(aria-hidden="true")
+                = current_user.display_name.capitalize
+
+            %li= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete 
+          - else
+            %li= link_to t('menu.sign_in'),  new_user_session_path, class: 'sign-in'
+            %li= link_to t('menu.sign_up'),  new_user_registration_path, class: 'sign-up' 
+
           = link_to new_wish_path, class: 'btn btn-primary navbar-btn' do
             %span.glyphicon.glyphicon-plus(aria-hidden="true")
             = t('menu.new_wish')
