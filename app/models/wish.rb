@@ -1,4 +1,4 @@
-class Wish < ActiveRecord::Base  
+class Wish < ActiveRecord::Base    
   before_validation :strip_whitespace
 
   validates :title, presence: true, uniqueness: true
@@ -12,9 +12,11 @@ class Wish < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   # validates :picture, presence: true
   
+  belongs_to :user #, dependent: :destroy
+
   scope :not_owned, -> { where owned: false }
   scope :owned, -> { where.not owned: false }
-  scope :published, -> { where public: true}
+  scope :published, -> { where public: true }
 
   def toggle_owned
     self.update owned: not(owned)
