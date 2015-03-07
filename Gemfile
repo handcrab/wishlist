@@ -4,9 +4,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
-# HEROKU
-# gem 'pg', group: :production
-# gem 'rails_12factor', group: :production
+group :production do
+  gem 'pg', group: :production
+  # Use Unicorn as the app server
+  gem 'unicorn'
+  # gem 'rails_12factor', group: :production
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -43,8 +46,6 @@ gem 'devise-bootstrap-views'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
