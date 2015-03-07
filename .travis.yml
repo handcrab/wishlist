@@ -3,3 +3,9 @@ rvm:
   - 2.1.5
 script: 'true'
 bundler_args: --without production
+script:
+  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rake spec
+  - RAILS_ENV=test bundle exec rake cucumber
