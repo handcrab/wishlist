@@ -1,6 +1,7 @@
 :books: dummy wishlist rails app #learning BDD and tests
 
 [![Build Status](https://travis-ci.org/handcrab/wishlist.svg?branch=master)](https://travis-ci.org/handcrab/wishlist)
+[![Coverage Status](https://coveralls.io/repos/handcrab/wishlist/badge.svg)](https://coveralls.io/r/handcrab/wishlist)
 
 # Features
 - Users can add their wihes
