@@ -2,6 +2,7 @@ ru:
   title: Хотелки
   error: Ошибка
   unhappy: 'Передумали'
+  first_time_here: 'Впервые здесь?'
   activerecord:
     models:
       wish: 'Желание'

@@ -43,6 +43,9 @@ gem 'redcarpet'
 gem 'devise'
 gem 'devise-bootstrap-views'
 
+# gem 'omniauth'
+gem 'omniauth-vkontakte'# , '~> 1.3.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
