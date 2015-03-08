@@ -8,11 +8,16 @@
 
   %body 
     %nav.navbar.navbar-default      
-      .container 
-        .navbar-header
-          = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'       
+      .container-fluid 
+        .navbar-header          
+          %button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'
 
-        %ul.nav.navbar-nav
+        %ul.nav.navbar-nav.navbar-collapse.collapse
           %li{ class: "#{'active' if all_wishes_page?}" }
             = link_to t('menu.all_wishes'), all_wishes_path 
           %li{ class: "#{'active' if owned_wishes_page?}" }
@@ -20,7 +25,7 @@
               %span.glyphicon.glyphicon-star(aria-hidden="true")
               = t('menu.owned_wishes')
 
-        %ul.nav.navbar-nav.navbar-right
+        %ul.nav.navbar-nav.navbar-right.navbar-collapse.collapse
           - if user_signed_in?
             %li
               = link_to edit_user_registration_path(current_user) do
