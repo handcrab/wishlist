@@ -4,6 +4,10 @@
     %title= t :title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag "//vk.com/js/api/openapi.js?116"
+    :javascript
+      VK.init({apiId: 4817011, onlyWidgets: true});
+
     = csrf_meta_tags
 
   %body 
