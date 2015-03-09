@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 
 group :production do
-  gem 'pg', group: :production
+  gem 'pg'
   # Use Unicorn as the app server
   gem 'unicorn'
   # gem 'rails_12factor', group: :production
@@ -83,6 +83,9 @@ group :development, :test do
   
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  gem 'fuubar'
+  gem 'fuubar-cucumber'
 end
 
 gem 'simplecov', require: false, group: :test
