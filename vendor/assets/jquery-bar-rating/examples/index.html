@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>jQuery Bar Rating Plugin Demo</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="css/examples.css" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
+          type="text/css"/>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="../jquery.barrating.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.rating-enable').click(function () {
+                $('#example-a').barrating();
+
+                $('#example-b').barrating('show', {
+                    readonly:true
+                });
+
+                $('#example-c, #example-d').barrating('show', {
+                    showValues:true,
+                    showSelectedRating:false
+                });
+
+                $('#example-e').barrating('show', {
+                    initialRating:'A',
+                    showValues:true,
+                    showSelectedRating:false,
+                    onSelect:function(value, text) {
+                        alert('Selected rating: ' + value);
+                    }
+                });
+
+                $('#example-f').barrating({ showSelectedRating:false });
+
+                $('#example-g').barrating('show', {
+                    showSelectedRating:true,
+                    reverse:true
+                });
+
+                $('#example-h').barrating('show', {
+                    reverse:true
+                });
+
+                $(this).addClass('deactivated');
+                $('.rating-disable').removeClass('deactivated');
+            });
+
+            $('.rating-disable').click(function () {
+                $('select').barrating('destroy');
+                $(this).addClass('deactivated');
+                $('.rating-enable').removeClass('deactivated');
+            });
+
+            $('.rating-enable').trigger('click');
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="content">
+        <a href="http://github.com/antennaio/jquery-bar-rating" class="github">
+            <img
+                    src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+                    alt="Fork me on GitHub"/>
+        </a>
+
+        <header>
+            <h1>jQuery Bar Rating Plugin</h1>
+
+            <h3>Minimal, light-weight jQuery ratings.</h3>
+
+            <blockquote>
+                jQuery Bar Rating Plugin works by transforming a standard
+                select box into a rating widget. It’s only 4kb minified and easy
+                to style with CSS. Take a look at a few examples.
+            </blockquote>
+        </header>
+
+        <div class="buttons">
+            <button class="blue-pill deactivated rating-enable">enable</button>
+            <button class="blue-pill rating-disable">disable</button>
+        </div>
+
+        <div class="input select rating-a">
+            <label for="example-a">Basic example:</label>
+            <select id="example-a" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7" selected="selected">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="input select rating-b">
+            <label for="example-b">Read-only rating:</label>
+            <select id="example-b" name="rating">
+                <option value="Bad">Bad</option>
+                <option value="Mediocre">Mediocre</option>
+                <option value="Quite good" selected="selected">Quite good</option>
+                <option value="Awesome">Awesome</option>
+            </select>
+        </div>
+
+        <div class="input select rating-c">
+            <label for="example-c">Rating values displayed on the bars:</label>
+            <select id="example-c" name="rating">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="input select rating-d">
+            <label for="example-d">Advanced styling:</label>
+            <select id="example-d" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="input select rating-e">
+            <label for="example-e">A rating with <i>onSelect</i> callback:</label>
+            <select id="example-e" name="rating">
+                <option value="D">D</option>
+                <option value="C">C</option>
+                <option value="CC">CC</option>
+                <option value="CCC-">CCC-</option>
+                <option value="CCC">CCC</option>
+                <option value="CCC+">CCC+</option>
+                <option value="B-">B-</option>
+                <option value="B">B</option>
+                <option value="B+">B+</option>
+                <option value="BB-">BB-</option>
+                <option value="BB">BB</option>
+                <option value="BB+">BB+</option>
+                <option value="BBB-">BBB-</option>
+                <option value="BBB">BBB</option>
+                <option value="BBB+">BBB+</option>
+                <option value="A-">A-</option>
+                <option value="A">A</option>
+                <option value="A+">A+</option>
+                <option value="AA-">AA-</option>
+                <option value="AA">AA</option>
+                <option value="AA+">AA+</option>
+                <option value="AAA">AAA</option>
+            </select>
+        </div>
+
+        <div class="input select rating-f">
+            <label for="example-f">Star rating... why not:</label>
+            <select id="example-f" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="input select rating-g">
+            <label for="example-g">Reversed rating:</label>
+            <select id="example-g" name="rating">
+                <option value="Strongly Agree">Strongly Agree</option>
+                <option value="Agree">Agree</option>
+                <option value="Neither Agree or Disagree">Neither Agree or Disagree</option>
+                <option value="Disagree">Disagree</option>
+                <option value="Strongly Disagree">Strongly Disagree</option>
+            </select>
+        </div>
+
+        <div class="input select rating-h">
+            <label for="example-h">Vertical rating:</label>
+            <select id="example-h" name="rating">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1" selected="selected">1</option>
+            </select>
+        </div>
+
+        <br/><br/>
+
+        <h2>How to use</h2>
+
+        <p>1. Add markup for your rating.</p>
+
+        <p>
+            <strong>
+                &lt;div class="rating-a"&gt;<br/>
+                &nbsp;&nbsp;&lt;select id=&quot;example&quot;&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&lt;/select&gt;<br/>
+                &lt;/div&gt;
+            </strong>
+        </p>
+
+        <p>
+            2. The widget is styled with CSS to allow maximum flexibility.
+            A few examples of <a href="css/examples.css">CSS styling</a>
+            are provided that you can use to customize the plugin to your needs.
+        </p>
+
+        <p>3. Activate the plugin:</p>
+
+        <p>
+            <strong>
+                &lt;script type=&quot;text/javascript&quot;&gt;<br/>
+                &nbsp;&nbsp;&nbsp;$(function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#example').barrating();<br/>
+                &nbsp;&nbsp;&nbsp;});<br/>
+                &lt;/script&gt;
+            </strong>
+        </p>
+
+        <h2>Configuration</h2>
+
+        <strong>initialRating:null</strong>
+        <p>Pass an option value to specify initial rating. If null, the plugin will try to set the initial rating by finding an option with a `selected` attribute.</p>
+
+        <strong>showValues:false</strong>
+        <p>If set to true, rating values will be displayed on the bars.</p>
+
+        <strong>showSelectedRating:true</strong>
+        <p>If set to true, user selected rating will be displayed next to the widget.</p>
+
+        <strong>reverse:false</strong>
+        <p>If set to true, the ratings will be reversed.</p>
+
+        <strong>readonly:false</strong>
+        <p>If set to true, the ratings will be read-only.</p>
+
+        <h2>Methods</h2>
+
+        <strong>$('select').barrating('show');</strong>
+        <p>Shows the rating widget.</p>
+
+        <strong>$('select').barrating('clear');</strong>
+        <p>Clears the rating.</p>
+
+        <strong>$('select').barrating('destroy');</strong>
+        <p>Destroys the rating widget.</p>
+
+        <h2>Callbacks</h2>
+
+        <strong>onSelect:function(value, text)</strong>
+        <p>Fired when a rating is selected.</p>
+
+        <strong>onClear:function(value, text)</strong>
+        <p>Fired when a rating is cleared.</p>
+
+        <strong>onDestroy:function(value, text)</strong>
+        <p>Fired when a rating is destroyed.</p>
+
+        <h2>License</h2>
+
+        <p>
+            Dual licensed under the MIT and GPL licenses:<br/>
+            <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a><br/>
+            <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>
+        </p>
+
+        <h2>Download</h2>
+
+        <a href="http://github.com/antennaio/jquery-bar-rating">Download the plugin from GitHub.</a>
+
+    </div>
+</div>
+
+</body>
+
+</html>

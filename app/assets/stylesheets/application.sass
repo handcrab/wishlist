@@ -1,6 +1,37 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import 'devise_bootstrap_views'
-@import 'lib/jquery.raty.css'
+
 .panel.wish
   text-align: center
+
+.bar-priority
+  .br-widget
+    height: 25px
+
+    a
+      display: block
+      width: 5px
+      height: 5px
+      padding: 5px 0 5px 0
+      float: left
+      background-color: #e3e3e3
+      margin: 1px
+      text-align: center
+
+    a.br-active, a.br-selected 
+      background-color: #59a6d6
+
+    .br-current-rating 
+      display: none
+      // font-size: 20px
+      // line-height: 2
+      // float: left
+      // padding: 0 20px 0 20px
+      // color: #646464
+.form-group
+  .bar-priority
+    display: none
+    a
+      width: 5%
+      height: 15px
