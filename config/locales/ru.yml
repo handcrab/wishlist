@@ -21,12 +21,13 @@ ru:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
         current_password: 'Текущий пароль'
-        remember_me: 'запомнить меня'        
+        remember_me: 'запомнить меня'
+        created_at: зарегистрирован
   forms:
     messages:
       success: "Операция прошла успешно!"
       confirm: 'Вы уверены?'
-      not_found: 'Ошибка: Запись не найдена'      
+      not_found: 'Ошибка: Запись не найдена'
     buttons:
       edit: "Изменить"
       submit: "Подтвердить"
@@ -35,7 +36,7 @@ ru:
       back: 'К списку'
       not_owned: 'Исполнено!'
       owned: 'Исполнено'
-      public: 'Опубликовать/Скрыть'      
+      public: 'Опубликовать/Скрыть'
   menu:
     new_wish: 'Добавить желание'
     owned_wishes: 'Исполненные'
