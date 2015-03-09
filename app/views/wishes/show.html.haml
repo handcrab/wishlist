@@ -6,11 +6,12 @@
         = t('forms.buttons.edit')
       = link_to @wish, method: :delete, data: { confirm: t('forms.messages.confirm') }, class: "btn btn-danger btn-xs" do
         %span.glyphicon.glyphicon-trash(aria-hidden="true")
-        = t('forms.buttons.delete')    
+        = t('forms.buttons.delete')
 
   %h1= @wish.title
   %p= formatted_date @wish.created_at
-
+  %p= @wish.user.display_name
+  
   = image_tag @wish.picture.url(:medium)
   %p
     %span.glyphicon.glyphicon-heart(aria-hidden="true")
@@ -25,7 +26,7 @@
     .btn-group
       = render partial: 'toggle_owned_btn', locals: { wish: @wish, css_class: 'owned btn btn-success' }
       = link_to toggle_public_wish_path(@wish), method: :patch, class: 'toggle-public btn' do
-        %span.glyphicon(aria-hidden="true" class="#{@wish.public? ? 'glyphicon-eye-close' : 'glyphicon-eye-open'}")    
+        %span.glyphicon(aria-hidden="true" class="#{@wish.public? ? 'glyphicon-eye-close' : 'glyphicon-eye-open'}")
         = t('forms.buttons.public')
 
     = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
