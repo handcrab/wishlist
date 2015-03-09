@@ -61,6 +61,23 @@ end
 #   end
 #
 
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://example.com'
+
+  # OmniAuth.config.add_mock(:vkontakte, {
+  #   uid: '12345',
+  #   info: {
+  #     name: 'vkuser',
+  #     nickname: 'vkuser'
+  #   }
+  # })
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
+
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature

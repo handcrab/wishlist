@@ -12,5 +12,11 @@ FactoryGirl.define do
       password '12345678'
     end
 
+    factory :vkuser do
+      uid '12345'
+      name 'vkuser'
+      email 'vkuser@@vk.messenger.com'
+    end
+
   end
 end

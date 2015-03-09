@@ -217,7 +217,7 @@ end
 end
 
 То(/^я должен оказаться на главной странице$/) do
-  expect(current_path).to eq wishes_path
+  expect(current_path).to eq root_path #wishes_path
 end
 То(/^я должен оказаться на странице со всеми желаниями$/) do
   expect(current_path).to eq all_wishes_path
