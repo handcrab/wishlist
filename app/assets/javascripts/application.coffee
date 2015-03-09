@@ -48,13 +48,5 @@ init = ->
     val = $(@).val()
     $(".form-group .bar-priority [data-rating-value='#{val}']").click()
 
-  # $('.star-rating').raty
-  #   path: '/assets/lib/images'
-  #   readOnly: true
-  #   numberMax: 10
-  #   number: 10
-  #   score: ->
-  #     $(@).attr 'data-score'
-
 $(document).ready init
 $(document).on 'page:load', init

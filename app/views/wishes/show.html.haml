@@ -16,11 +16,7 @@
   %p
     %span.glyphicon.glyphicon-heart(aria-hidden="true")
     = @wish.priority
-
     .bar-rating(data-score='#{@wish.priority}')
-  / %p.star-rating(data-score='#{@wish.priority}')
-  /   %span.glyphicon.glyphicon-heart(aria-hidden="true")
-  /   = @wish.priority
 
   %p= number_to_currency @wish.price
   #vk_like

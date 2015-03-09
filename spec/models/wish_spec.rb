@@ -67,6 +67,11 @@ RSpec.describe Wish, type: :model do
 
     it { should be_valid }
     its(:priority) { should == 0 }
+    
+    its 'default price is 0' do
+      empty_wish = Wish.new
+      expect(empty_wish.price).to eq 0
+    end
   end
 
   describe 'owned' do
