@@ -44,6 +44,9 @@ init = ->
     showSelectedRating: false
     onSelect: (value, txt) -> $('.form-group #wish_priority').val value
 
+  currentPriority = $('.form-group #wish_priority').val()
+  $(".form-group .bar-priority [data-rating-value='#{currentPriority}']").click()
+
   $('.form-group #wish_priority').change ->
     val = $(@).val()
     $(".form-group .bar-priority [data-rating-value='#{val}']").click()
