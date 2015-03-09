@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :wishes
-  
+  has_many :wishes, dependent: :destroy
+
   def display_name
     return get_name_from_mail if name.blank?
     name
   end
-     
+
   private
   def get_name_from_mail
     email.match(/(.*?)@.*/)[1]

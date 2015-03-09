@@ -39,7 +39,7 @@ RSpec.describe Wish, type: :model do
     describe 'priority validation' do
       let(:wrong_params) { valid_attributes }
 
-      it 'is invalid when priority is not an integer' do        
+      it 'is invalid when priority is not an integer' do
         wrong_params[:priority] = '1.5'
         wish = Wish.new wrong_params
         expect(wish).to_not be_valid
@@ -58,7 +58,7 @@ RSpec.describe Wish, type: :model do
         wish = Wish.new wrong_params
         expect(wish).to_not be_valid
       end
-    end 
+    end
   end
   
   describe 'default values' do
@@ -96,12 +96,16 @@ RSpec.describe Wish, type: :model do
 
   describe 'picture' do
     it { should respond_to :picture }
-    # it { should validate_presence_of :picture }    
+    # it { should validate_presence_of :picture }
   end
 
   describe 'public' do
     it { should respond_to :public }
     # default value
     it { should be_public }
+  end
+
+  describe 'user relation' do
+    it { should belong_to :user }
   end
 end
