@@ -1,4 +1,4 @@
-%article
+%article.wish
   - if @wish.user == current_user
     .btn-group.controls
       = link_to edit_wish_path(@wish), {class: "btn btn-default btn-xs"} do
@@ -9,22 +9,27 @@
         = t('forms.buttons.delete')
 
   %h1= @wish.title
+
   %p= formatted_date @wish.created_at
-  %p
+
+  .user-data
     = image_tag avatar_url(@wish.user, :thumb), alt: @wish.user.display_name
     = @wish.user.display_name
 
-  = image_tag @wish.picture.url(:medium)
-  %p
+  .cover
+    = image_tag @wish.picture.url(:medium)
+
+  .priority
     %span.glyphicon.glyphicon-heart(aria-hidden="true")
     = @wish.priority
     .bar-rating(data-score='#{@wish.priority}')
 
-  %p= number_to_currency @wish.price
+  .price= number_to_currency @wish.price
+
   #vk_like
 
   %hr
-  %p= simple_markdown @wish.description
+  .description= simple_markdown @wish.description
 
   - if @wish.user == current_user
     .btn-group
@@ -35,5 +40,6 @@
 
     = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
 
-:javascript
-  VK.Widgets.Like("vk_like", {type: "mini", height: 20});
+.js-block(data-no-turbolink)
+  :javascript
+    VK.Widgets.Like("vk_like", {type: "mini", height: 20});

@@ -8,10 +8,6 @@
 
     .panel-body
       = image_tag wish.picture.url(:thumb)
-      %br
-      = #link_to t('forms.buttons.owned'), wish_path(wish, wish: {owned: !wish.owned}), method: :patch, remote: true, class: 'owned'
-
-      = # link_to t('forms.buttons.owned'), toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned'
 
       - if wish.user == current_user
         %hr

@@ -1,8 +1,10 @@
-.avatar
-  = image_tag avatar_url(current_user), alt: current_user.display_name
-.wish-stats
-  = link_to "#{t('menu.all_wishes')}: #{user.wishes.count}", all_wishes_path
-  = link_to "#{t('menu.owned_wishes')}: #{user.wishes.owned.count}", owned_wishes_path
+.row.wish-stats
+  .avatar
+    = image_tag avatar_url(current_user), alt: current_user.display_name
+  .links
+    = link_to "#{t('menu.all_wishes')}: #{user.wishes.count}", all_wishes_path
+    %br
+    = link_to "#{t('menu.owned_wishes')}: #{user.wishes.owned.count}", owned_wishes_path
 
 %p 
   = User.human_attribute_name :created_at
