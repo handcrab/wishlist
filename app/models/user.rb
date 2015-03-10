@@ -7,24 +7,23 @@ class User < ActiveRecord::Base
 
   has_many :wishes, dependent: :destroy
 
-  has_attached_file :avatar, styles: { medium: "100x100>", thumb: "25x25>" }
-    # default_url: "/images/:style/avatar-missing.png"
+  has_attached_file :avatar, styles: { medium: '100x100>', thumb: '25x25>' }
+  # default_url: "/images/:style/avatar-missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def display_name
-    return get_name_from_email if name.blank?
+    return make_name_from_email if name.blank?
     name
   end
 
-  def self.from_omniauth auth #, signed_in_resource=nil
+  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       # user.provider = auth.provider
       # user.uid = auth.uid
-
       user.name = auth.info.name
       user.email = auth.info.email || "#{auth.info.nickname}@vk.messenger.com"
       user.avatar = URI.parse auth.info.image
-      #"#{auth.info.first_name}@vk.messenger.com"
+      # "#{auth.info.first_name}@vk.messenger.com"
       # user.password = Devise.friendly_token[0,20]
     end
   end
@@ -32,6 +31,7 @@ class User < ActiveRecord::Base
   def password_required?
     (provider.blank? || !password.blank?) && super
   end
+
   def omniauth_user?
     provider.present?
   end
@@ -65,7 +65,8 @@ class User < ActiveRecord::Base
   # end
 
   private
-  def get_name_from_email
+
+  def make_name_from_email
     email.match(/(.*?)@.*/)[1]
   end
 end

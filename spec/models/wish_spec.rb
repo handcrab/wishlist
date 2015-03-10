@@ -60,14 +60,14 @@ RSpec.describe Wish, type: :model do
       end
     end
   end
-  
+
   describe 'default values' do
     let(:no_priority_wish) { attributes_for :no_priority_wish }
     subject { Wish.create! no_priority_wish }
 
     it { should be_valid }
     its(:priority) { should == 0 }
-    
+
     its 'default price is 0' do
       empty_wish = Wish.new
       expect(empty_wish.price).to eq 0

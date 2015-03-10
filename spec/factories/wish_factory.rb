@@ -3,28 +3,28 @@ FactoryGirl.define do
     factory :invalid_wish do
       title ''
       price 'дорого'
-      priority 'low' 
-      description ''   
+      priority 'low'
+      description ''
     end
     # VALID:
     factory :valid_wish do
       title 'айфон'
       price '30000'
       priority '2' 
-      description 'нужен для получения юзер-экспериенса'   
+      description 'нужен для получения юзер-экспериенса'
     end
 
     factory :no_priority_wish do
       title 'ipad'
-      price '30000'       
-      description ''   
+      price '30000'
+      description ''
     end
 
     factory :iphone do
       title 'айфон'
       price '30000'
       priority '2' 
-      description '__нужен__ для получения юзер-экспериенса'   
+      description '__нужен__ для получения юзер-экспериенса'
     end
 
     factory :owned_iphone do
@@ -32,13 +32,13 @@ FactoryGirl.define do
       price '30000'
       priority '2' 
       owned 'true'
-      description 'нужен для получения юзер-экспериенса'   
+      description 'нужен для получения юзер-экспериенса'
     end
 
     factory :notebook do
       title 'Notebook'
       price ' 20000'
-      priority '7' 
+      priority '7'
       description %Q(
         ## Requrements:
         + IPS
@@ -46,14 +46,14 @@ FactoryGirl.define do
 
         ~~http://market.yandex.ru/product/10830283/spec?hid=91013&track=char~~
         ? http://market.yandex.ru/product/11000746/spec?hid=91013&track=tabs
-      )   
+      )
     end
 
     factory :ram do
       title 'оперативка 8Gb для ноута'
       price '5 000'
       priority '7' 
-      description ''   
+      description ''
     end
 
     factory :private_wish do
@@ -61,8 +61,7 @@ FactoryGirl.define do
       price '50'
       priority '7'
       public 'false'
-      description ''   
+      description ''
     end
-
   end
 end

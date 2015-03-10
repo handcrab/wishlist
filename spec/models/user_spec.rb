@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'rspec/its'
 
-RSpec.describe User, type: :model do  
+RSpec.describe User, type: :model do
   let(:user_attributes) { attributes_for :vasia }
   subject { User.create! user_attributes }
 
@@ -37,8 +37,10 @@ RSpec.describe User, type: :model do
   describe 'avatar' do
     it { expect respond_to :avatar }
     it { should have_attached_file(:avatar) }
-    it { should validate_attachment_content_type(:avatar).
-      allowing('image/png', 'image/gif').
-      rejecting('text/plain', 'text/xml') }
+    it do
+      should validate_attachment_content_type(:avatar)
+        .allowing('image/png', 'image/gif')
+        .rejecting('text/plain', 'text/xml')
+    end
   end
 end

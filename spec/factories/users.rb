@@ -6,8 +6,8 @@ FactoryGirl.define do
       email 'vasia@lol.ka'
       password '12345678'
     end
-    
-    factory :ololosha do    
+
+    factory :ololosha do
       email 'ololosha@lol.ka'
       password '12345678'
     end
@@ -17,6 +17,5 @@ FactoryGirl.define do
       name 'vkuser'
       email 'vkuser@@vk.messenger.com'
     end
-
   end
 end

@@ -3,14 +3,15 @@
 end
 
 Допустим(/^я \- авторизованный пользователь Вконтакте$/) do
-  OmniAuth.config.add_mock(:vkontakte, {
+  OmniAuth.config.add_mock(
+    :vkontakte,
     uid: '12345',
     info: {
       name: 'vkuser',
       nickname: 'vkuser',
       image: 'http://cs7001.vk.me/c7003/v7003079/374b/53lwetwOxD8.jpg'
     }
-  })
+  )
 end
 
 Допустим(/^я нахожусь на странице регистрации$/) do
@@ -28,4 +29,3 @@ end
 То(/^я должен увидеть ссылку на свой профиль$/) do
   expect(find(:css, '.user-profile').text).to eq 'vkuser'.capitalize
 end
-
