@@ -11,7 +11,7 @@
   %h1= @wish.title
   %p= formatted_date @wish.created_at
   %p
-    = image_tag @wish.user.avatar.url(:thumb)
+    = image_tag avatar_url(@wish.user, :thumb), alt: @wish.user.display_name
     = @wish.user.display_name
 
   = image_tag @wish.picture.url(:medium)
