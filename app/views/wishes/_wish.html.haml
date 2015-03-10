@@ -1,6 +1,6 @@
 .col-md-4
-  %article.panel.panel-default.wish  
-    .panel-heading      
+  %article.panel.panel-default.wish
+    .panel-heading
       %h1.panel-title
         - unless wish.public?
           %span.glyphicon(aria-hidden="true" class="glyphicon-eye-close")    
@@ -10,11 +10,9 @@
       = image_tag wish.picture.url(:thumb)
       %br
       = #link_to t('forms.buttons.owned'), wish_path(wish, wish: {owned: !wish.owned}), method: :patch, remote: true, class: 'owned'
-      
+
       = # link_to t('forms.buttons.owned'), toggle_owned_wish_path(wish), method: :patch, remote: true, class: 'owned'
 
       - if wish.user == current_user
         %hr
         = render partial: 'toggle_owned_btn', locals: { wish: wish, css_class: 'owned' }
-
-        

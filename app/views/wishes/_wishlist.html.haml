@@ -1,1 +1,5 @@
-= render @wishes
+- if @wishes.empty?
+  = t('wishes.empty_result')
+  = link_to t('menu.new_wish'), new_wish_path
+- else 
+  = render @wishes

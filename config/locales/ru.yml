@@ -9,8 +9,8 @@ ru:
       user: 'профиль'
     attributes:
       wish:
-        title: "Название"
-        description: "Описание"
+        title: 'Название'
+        description: 'Описание'
         priority: 'Приоритет'
         price: 'Цена'
         owned: 'Исполнено'
@@ -25,13 +25,13 @@ ru:
         created_at: зарегистрирован
   forms:
     messages:
-      success: "Операция прошла успешно!"
+      success: 'Операция прошла успешно!'
       confirm: 'Вы уверены?'
       not_found: 'Ошибка: Запись не найдена'
     buttons:
-      edit: "Изменить"
-      submit: "Подтвердить"
-      delete: "Удалить"
+      edit: 'Изменить'
+      submit: 'Подтвердить'
+      delete: 'Удалить'
       cancel: 'Отмена'
       back: 'К списку'
       not_owned: 'Исполнено!'
@@ -46,9 +46,10 @@ ru:
     sign_out: 'Выход'
     user_profile: 'Профиль'
   wishes:
+    empty_result: 'У вас здесь еще ничего нет. Попробуйте:'
     index:
-      title: "Список желаний"
+      title: 'Список желаний'
     edit:
-      title: "Изменить желание"
+      title: 'Изменить желание'
     new:
-      title: "Новое желание"
+      title: 'Новое желание'
