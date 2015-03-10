@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
 
   has_many :wishes, dependent: :destroy
 
+  has_attached_file :avatar, styles: { medium: "100x100>", thumb: "25x25>" }
+    # default_url: "/images/:style/avatar-missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   def display_name
-    return get_name_from_mail if name.blank?
+    return get_name_from_email if name.blank?
     name
   end
 
@@ -19,6 +23,7 @@ class User < ActiveRecord::Base
 
       user.name = auth.info.name
       user.email = auth.info.email || "#{auth.info.nickname}@vk.messenger.com"
+      user.avatar = URI.parse auth.info.image
       #"#{auth.info.first_name}@vk.messenger.com"
       # user.password = Devise.friendly_token[0,20]
     end
@@ -30,6 +35,7 @@ class User < ActiveRecord::Base
   def omniauth_user?
     provider.present?
   end
+
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)
@@ -59,7 +65,7 @@ class User < ActiveRecord::Base
   # end
 
   private
-  def get_name_from_mail
+  def get_name_from_email
     email.match(/(.*?)@.*/)[1]
   end
 end

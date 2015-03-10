@@ -7,7 +7,8 @@ end
     uid: '12345',
     info: {
       name: 'vkuser',
-      nickname: 'vkuser'
+      nickname: 'vkuser',
+      image: 'http://cs7001.vk.me/c7003/v7003079/374b/53lwetwOxD8.jpg'
     }
   })
 end

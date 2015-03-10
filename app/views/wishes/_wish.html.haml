@@ -3,7 +3,7 @@
     .panel-heading
       %h1.panel-title
         - unless wish.public?
-          %span.glyphicon(aria-hidden="true" class="glyphicon-eye-close")    
+          %span.glyphicon(aria-hidden="true" class="glyphicon-eye-close")
         = link_to wish.title, wish 
 
     .panel-body

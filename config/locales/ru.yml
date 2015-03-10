@@ -19,6 +19,7 @@ ru:
         name: 'Имя'
         email: 'Эл. почта'
         password: 'Пароль'
+        avatar: 'Аватар'
         password_confirmation: 'Подтверждение пароля'
         current_password: 'Текущий пароль'
         remember_me: 'запомнить меня'

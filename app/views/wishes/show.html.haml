@@ -10,8 +10,10 @@
 
   %h1= @wish.title
   %p= formatted_date @wish.created_at
-  %p= @wish.user.display_name
-  
+  %p
+    = image_tag @wish.user.avatar.url(:thumb)
+    = @wish.user.display_name
+
   = image_tag @wish.picture.url(:medium)
   %p
     %span.glyphicon.glyphicon-heart(aria-hidden="true")

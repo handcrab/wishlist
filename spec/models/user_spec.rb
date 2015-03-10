@@ -33,4 +33,12 @@ RSpec.describe User, type: :model do
   describe 'wish relation' do
     it { should have_many(:wishes).dependent(:destroy) }
   end
+
+  describe 'avatar' do
+    it { expect respond_to :avatar }
+    it { should have_attached_file(:avatar) }
+    it { should validate_attachment_content_type(:avatar).
+      allowing('image/png', 'image/gif').
+      rejecting('text/plain', 'text/xml') }
+  end
 end
