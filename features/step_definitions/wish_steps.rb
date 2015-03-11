@@ -220,7 +220,7 @@ end
   expect(current_path).to eq root_path # wishes_path
 end
 То(/^я должен оказаться на странице со всеми желаниями$/) do
-  expect(current_path).to eq all_wishes_path
+  expect(current_path).to eq personal_wishes_path
 end
 
 Если(/^я помечаю желание как исполненное$/) do
@@ -277,7 +277,7 @@ end
 
 
 Если(/^перехожу на страницу со всеми желаниями$/) do
-  visit all_wishes_path
+  visit personal_wishes_path
 end
 
 Допустим(/^я \- авторизированный пользователь$/) do

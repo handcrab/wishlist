@@ -138,13 +138,13 @@ RSpec.describe WishesController, type: :controller do
     end
   end
 
-  describe '#all' do
+  describe '#personal' do
     context 'authorized user' do
       before(:each) do
         sign_in vasia
         # allow(Wish).to receive(:all).and_return []
         allow(vasia).to receive(:wishes).and_return []
-        get :all
+        get :personal
       end
 
       it 'assigns @wishes' do
@@ -157,12 +157,30 @@ RSpec.describe WishesController, type: :controller do
     context 'non-authorized user' do
       it 'redirects to login page' do
         sign_in nil
-        get :all
+        get :personal
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
+  describe '#user_public' do
+    context 'user exists' do
+      before(:each) do 
+        get :user_public, id: vasia.id
+      end
+      it 'assigns @wishes' do
+        expect(assigns[:wishes]).not_to be_nil
+      end
+      it { respond_with :succes }
+      it { render_template :index }
+    end
+
+    context 'user doesnt exist' do
+      it 'raises record not found' do
+        expect { get :user_public, id: 'not_exists' }.to raise_exception ActiveRecord::RecordNotFound
+      end
+    end
+  end
   # ______
   describe '#show' do
     # let(:valid_wish) { build_stubbed :iphone }
@@ -580,7 +598,7 @@ RSpec.describe WishesController, type: :controller do
           delete_request
         end
         it { respond_with :redirect } # ??? 202
-        it { redirect_to all_wishes_path }
+        it { redirect_to personal_wishes_path }
         # it 'destroys the requested wish' do
         #   expect { delete_request }.to change(Wish, :count).by(-1)
         #   expect(Wish.all).not_to include valid_wish

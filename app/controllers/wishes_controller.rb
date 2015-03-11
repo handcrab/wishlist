@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :user_public]
   before_action :authorize_user,
                 only: [:edit, :update, :toggle_owned, :toggle_public, :destroy]
 
@@ -56,7 +56,7 @@ class WishesController < ApplicationController
 
         if request.xhr?
           @wishlist = case request.referrer
-                      when all_wishes_url
+                      when personal_wishes_url
                         current_user.wishes
                       when owned_wishes_url
                         current_user.wishes.owned
@@ -92,7 +92,7 @@ class WishesController < ApplicationController
 
   def destroy
     @wish.destroy
-    redirect_to all_wishes_path, notice: t('forms.messages.success')
+    redirect_to personal_wishes_path, notice: t('forms.messages.success')
   end
 
   def owned
@@ -101,9 +101,15 @@ class WishesController < ApplicationController
     render :index
   end
 
-  def all
+  def personal # alias all
     @wishes = current_user.wishes
-    # Wish.all
+    render :index
+  end
+
+  # GET users/:id/wishes
+  def user_public
+    user = User.find params[:id]
+    @wishes = user.wishes.published.not_owned
     render :index
   end
 

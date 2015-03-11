@@ -22,8 +22,8 @@
           = link_to t(:title).mb_chars.upcase, root_path, class: 'navbar-brand'
 
         %ul.nav.navbar-nav.navbar-collapse.collapse
-          %li{ class: "#{'active' if all_wishes_page?}" }
-            = link_to t('menu.all_wishes'), all_wishes_path
+          %li{ class: "#{'active' if personal_wishes_page?}" }
+            = link_to t('menu.all_wishes'), personal_wishes_path
           %li{ class: "#{'active' if owned_wishes_page?}" }
             = link_to owned_wishes_path do
               %span.glyphicon.glyphicon-star(aria-hidden="true")

@@ -3,8 +3,8 @@ module ApplicationHelper
     current_page? owned_wishes_path
   end
 
-  def all_wishes_page?
-    current_page? all_wishes_path
+  def personal_wishes_page?
+    current_page? personal_wishes_path
   end
 
   def formatted_date(date)

@@ -84,7 +84,7 @@ RSpec.describe Wish, type: :model do
     # subject { Wish.create valid_attributes }
     it { should respond_to :toggle_owned }
 
-    it 'shoul toggle the owned value' do
+    it 'should toggle the owned value' do
       wish = Wish.create! attributes_for :notebook
       expect(wish).not_to be_owned
       wish.toggle_owned

@@ -13,8 +13,9 @@
   %p= formatted_date @wish.created_at
 
   .user-data
-    = image_tag avatar_url(@wish.user, :thumb), alt: @wish.user.display_name
-    = @wish.user.display_name
+    = link_to user_public_path(@wish.user) do
+      = image_tag avatar_url(@wish.user, :thumb), alt: @wish.user.display_name
+      = @wish.user.display_name
 
   .cover
     = image_tag @wish.picture.url(:medium)

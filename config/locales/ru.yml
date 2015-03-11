@@ -46,6 +46,7 @@ ru:
     sign_up: 'Регистрация'
     sign_out: 'Выход'
     user_profile: 'Профиль'
+    public_page: 'Публичная страница'
   wishes:
     empty_result: 'У вас здесь еще ничего нет. Попробуйте:'
     index:
