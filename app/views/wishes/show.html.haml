@@ -42,5 +42,6 @@
       = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
 
 .js-block(data-no-turbolink)
-  :javascript
-    VK.Widgets.Like("vk_like", {type: "mini", height: 20});
+  :coffeescript
+    console.log "#{wish_url @wish}"
+    VK.Widgets.Like("vk_like", {type: "mini", height: 20, page_id: '#{wish_url(@wish)}'})
