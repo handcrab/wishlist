@@ -3,7 +3,7 @@
   %head
     %title= t :title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag "http://vk.com/js/api/openapi.js?116"
+    - # javascript_include_tag "http://vk.com/js/api/openapi.js?116"
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     = csrf_meta_tags
@@ -39,6 +39,7 @@
             %li= link_to t('menu.sign_in'),  new_user_session_path, class: 'sign-in'
             %li= link_to t('menu.sign_up'),  new_user_registration_path, class: 'sign-up'
 
+        .navbar-right
           = link_to new_wish_path, class: 'btn btn-primary navbar-btn' do
             %span.glyphicon.glyphicon-plus(aria-hidden="true")
             = t('menu.new_wish')

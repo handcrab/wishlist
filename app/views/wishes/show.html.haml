@@ -41,7 +41,7 @@
 
       = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
 
-.js-block(data-no-turbolink)
-  :coffeescript
-    console.log "#{wish_url @wish}"
-    VK.Widgets.Like("vk_like", {type: "mini", height: 20, page_id: '#{wish_url(@wish)}'})
+= javascript_include_tag "http://vk.com/js/api/openapi.js?116"
+:coffeescript
+  VK.init apiId: #{Rails.application.secrets.vk_id}, onlyWidgets: true
+  VK.Widgets.Like("vk_like", {type: "mini", height: 20, page_id: '#{wish_url @wish}'})

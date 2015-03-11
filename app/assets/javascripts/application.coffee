@@ -51,7 +51,7 @@ init = ->
     val = $(@).val()
     $(".form-group .bar-priority [data-rating-value='#{val}']").click()
 
-VK.init apiId: Rails.application.secrets.vk_id, onlyWidgets: true
+# VK.init apiId: <%= Rails.application.secrets.vk_id %>, onlyWidgets: true
 
 $(document).ready init
 $(document).on 'page:load', init
