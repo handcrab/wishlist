@@ -8,7 +8,7 @@
         %span.glyphicon.glyphicon-trash(aria-hidden="true")
         = t('forms.buttons.delete')
 
-  %h1= @wish.title
+  %h1.title= @wish.title
 
   %p= formatted_date @wish.created_at
 
@@ -39,7 +39,7 @@
         %span.glyphicon(aria-hidden="true" class="#{@wish.public? ? 'glyphicon-eye-close' : 'glyphicon-eye-open'}")
         = t('forms.buttons.public')
 
-    = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
+      = link_to t('forms.buttons.back'), wishes_path, class: 'btn'
 
 .js-block(data-no-turbolink)
   :javascript

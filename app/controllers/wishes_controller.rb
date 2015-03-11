@@ -1,8 +1,8 @@
 class WishesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :user_public]
   before_action :authorize_user,
-                only: [:edit, :update, :toggle_owned, :toggle_public, :destroy]
-
+                only: [:edit, :update, :toggle_owned, :cancel_owned, :toggle_public, :destroy]
+                # except: [:new, :create, :show, :index, :user_public]
   def new
     @wish = current_user.wishes.build
   end
@@ -45,43 +45,26 @@ class WishesController < ApplicationController
     end
   end
 
+  # def cancel_owned
+  #   @wish.toggle_owned
+  #   @wishes = current_user.wishes.owned
+  #   respond_to do |format|
+  #     format.js { render 'toggle_owned.coffee' }
+  #     format.html { redirect_to :back }
+  #   end
+  # end
+
   def toggle_owned
-    # if request.xhr?
-    #   flash[:notice] = t 'forms.messages.success'
-    #   flash.keep :notice
-    #   # render js: "window.location = #{your_path}"
-    # end
+    # request.xhr?
+    @wish.toggle_owned
+    @wishes = wishes_by_referrer
     respond_to do |format|
-      if @wish.toggle_owned # update owned: owned
-
-        if request.xhr?
-          @wishlist = case request.referrer
-                      when personal_wishes_url
-                        current_user.wishes
-                      when owned_wishes_url
-                        current_user.wishes.owned
-                        # @wishlist = if @wish.owned?
-                        #   #Wish.all.not_owned
-                        #   current_user.wishes.not_owned
-                        # else
-                        #   current_user.wishes.owned
-                        #   #Wish.all.owned
-                        # end
-                      else
-                        # request.referrer == root_url
-                        Wish.all.published.not_owned
-                      end
-        end
-
-        format.html { redirect_to @wish, notice: t('forms.messages.success') }
-        format.js
-      else
-        format.html { redirect_to @wish, alert: t(:error) }
-        # format.js { render text: e.message, status: 403 }
-      end
+      format.js
+      format.html { redirect_to :back, notice: t('forms.messages.success') }
     end
   end
 
+  # js only
   def toggle_public
     if @wish.update public: !@wish.public
       redirect_to @wish, notice: t('forms.messages.success')
@@ -125,5 +108,17 @@ class WishesController < ApplicationController
 
     msg = t('devise.failure.unauthenticated')
     redirect_to root_path, alert: msg unless @wish
+  end
+
+  def wishes_by_referrer
+    case request.referrer
+      when personal_wishes_url
+        current_user.wishes
+      when owned_wishes_url
+        current_user.wishes.owned
+      else
+        # root_url
+        Wish.all.published.not_owned
+      end
   end
 end

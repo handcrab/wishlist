@@ -126,7 +126,7 @@ end
   @ram = Wish.find_by title: @ram[:title]
 
   find_link @iphone.title
-  find "a[href='#{wish_path @iphone}']"
+  find "h1 a[href='#{wish_path @iphone}']"
   find_link @notebook.title, href: wish_path(@notebook)
   find_link @ram.title, href: wish_path(@ram)
   # find("a", :text => "berlin")
@@ -258,8 +258,8 @@ end
   # find(:css, "a[href^='#{wish_path @iphone}']").find(:text => 'Quox')
   # find( "a[href^='#{wish_path @iphone}']") { I18n.t('forms.buttons.owned') }
 
-  # click_link I18n.t('forms.buttons.owned')
-  find("a.owned[href^='#{wish_path @iphone}']").click
+  # find("a.owned[href^='#{wish_path @iphone}']").click
+  find("form[action^='#{wish_path @iphone}'] .owned").click
 
   # img[src^='https://www.example.com/image']
   # click_link I18n.t('forms.buttons.owned'), href: /#{wish_path(@iphone)}/

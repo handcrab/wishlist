@@ -8,7 +8,7 @@
 
   .form-group
     = f.label :title
-    = f.text_field :title, class: 'form-control'
+    = f.text_field :title, class: 'form-control', autofocus: true
 
   .form-group
     = f.label :picture #, "#{img_f.object.new_record? ? 'Add' : 'Change'}"
@@ -37,6 +37,11 @@
     = f.label :owned do
       = f.check_box :owned #, class: 'form-control'
       = t('activerecord.attributes.wish.owned')
+  
+  .checkbox
+    = f.label :public do
+      = f.check_box :public #, class: 'form-control'
+      = t('activerecord.attributes.wish.public')
 
   .form-group
     = f.label :description

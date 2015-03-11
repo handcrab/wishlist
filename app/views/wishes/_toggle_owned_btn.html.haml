@@ -1,3 +1,4 @@
-= link_to toggle_owned_wish_path(wish), method: :patch, remote: true, class: css_class do
-  %span.glyphicon(aria-hidden="true" class="#{wish.owned? ? 'glyphicon-star' : 'glyphicon-star-empty'}")
-  = wish.owned? ? t('forms.buttons.owned') : t('forms.buttons.not_owned')
+.toggle-owned
+  = button_to toggle_owned_wish_path(wish), method: :patch, remote: true, class: css_class do
+    %span.glyphicon(aria-hidden="true" class="#{wish.owned? ? 'glyphicon-star' : 'glyphicon-star-empty'}")
+    = wish.owned? ? t('forms.buttons.owned') : t('forms.buttons.not_owned')

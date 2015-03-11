@@ -511,6 +511,7 @@ RSpec.describe WishesController, type: :controller do
         # ???? stub strong params
         allow(vasia).to receive_message_chain(:wishes, :not_owned).and_return []
         allow(vasia).to receive_message_chain(:wishes, :owned).and_return []
+        request.env['HTTP_REFERER'] = personal_wishes_path
       end
 
       # it 'sends :find message to Wish class' do
@@ -531,7 +532,7 @@ RSpec.describe WishesController, type: :controller do
       #   expect(assigns[:wishlist]).not_to be_nil
       # end
       it { respond_with :redirect }
-      it { redirect_to old_wish }
+      it { redirect_to :back }
       it 'assigns a success flash message' do
         patch_request
         expect(flash[:notice]).not_to be_nil
@@ -544,9 +545,9 @@ RSpec.describe WishesController, type: :controller do
         before(:each) do
           patch_request
         end
-        it 'assigns @wishlist' do
+        it 'assigns @wishes' do
           patch_request
-          expect(assigns[:wishlist]).not_to be_nil
+          expect(assigns[:wishes]).not_to be_nil
         end
         it 'renders js template' do
           expect(response).to render_template :toggle_owned

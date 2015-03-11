@@ -15,6 +15,7 @@ ru:
         price: 'Цена'
         owned: 'Исполнено'
         picture: 'Обложка'
+        public: 'Публично'
       user:
         name: 'Имя'
         email: 'Эл. почта'

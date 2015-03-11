@@ -1,6 +1,6 @@
 if $("#wishes").length
   # index/all wishes page
-  $("#wishes").html("<%=j render @wishlist %>")
+  $("#wishes").html("<%=j render 'wishlist' %>")
 else
   # show page
   btn = $('.owned span')

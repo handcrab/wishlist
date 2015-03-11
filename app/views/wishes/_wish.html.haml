@@ -7,8 +7,10 @@
         = link_to wish.title, wish 
 
     .panel-body
-      = image_tag wish.picture.url(:thumb)
+      = link_to wish do
+        = image_tag wish.picture.url(:thumb)
 
       - if wish.user == current_user
         %hr
-        = render partial: 'toggle_owned_btn', locals: { wish: wish, css_class: 'owned' }
+        = render partial: 'toggle_owned_btn',
+                 locals: { wish: wish,  css_class: 'owned btn' }
