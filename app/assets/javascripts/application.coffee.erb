@@ -34,6 +34,9 @@ buildBar = (number=10) ->
   $ratingView.html $tmp
   $ratingView.find('select').barrating('show', {readonly:true})
 
+# VK.init apiId:  #{Rails.application.secrets.vk_id}, onlyWidgets: true
+VK.init apiId: "<%= Rails.application.secrets.vk_id %>", onlyWidgets: true
+
 init = ->
   buildBar()
 
@@ -51,7 +54,14 @@ init = ->
     val = $(@).val()
     $(".form-group .bar-priority [data-rating-value='#{val}']").click()
 
-# VK.init apiId: <%= Rails.application.secrets.vk_id %>, onlyWidgets: true
+  # VK.init apiId: <%= Rails.application.secrets.vk_id %>, onlyWidgets: true
+  if $("#vk_like")[0]
+    $("#vk_like").empty()
+    VK.Widgets.Like "vk_like", {
+      type: "mini",
+      height: 20,
+      pageUrl: window.location.href
+    }, VK.MD5(window.location.href) # page_id
 
 $(document).ready init
 $(document).on 'page:load', init
