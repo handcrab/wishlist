@@ -27,7 +27,7 @@ en:
       wish:
         title: "Title"
         description: "Description"
-        priority: 'PriorityYYY'
+        priority: 'Priority'
         price: 'Price'
   forms:
     messages:
@@ -40,7 +40,8 @@ en:
       delete: "Delete"
       back: 'Back'
   menu:
-    new_article: "Add an article"
+    all_wishes: 'My Wishes'
+    owned_wishes: 'Owned Wishes'
   wishes:
     index:
       title: "Wishlist"
