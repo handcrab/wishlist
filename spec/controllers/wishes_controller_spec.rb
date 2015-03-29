@@ -88,7 +88,7 @@ RSpec.describe WishesController, type: :controller do
 
     before(:each) do
       # allow(Wish).to receive(:all).and_return wishes #[valid_wish]
-      Wish.stub_chain(:all, :published, :not_owned).and_return [iphone]
+      Wish.stub_chain(:all, :published, :not_owned, :includes).and_return [iphone]
       get :index
     end
 

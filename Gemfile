@@ -82,6 +82,7 @@ group :development, :test do
 
   gem 'fuubar'
   gem 'fuubar-cucumber'
+  gem 'bullet'
 end
 
 gem 'simplecov', require: false, group: :test

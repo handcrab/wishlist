@@ -31,7 +31,7 @@ class WishesController < ApplicationController
   end
 
   def index
-    @wishes = Wish.all.published.not_owned
+    @wishes = Wish.all.published.not_owned.includes :user
   end
 
   def edit
@@ -112,13 +112,13 @@ class WishesController < ApplicationController
 
   def wishes_by_referrer
     case request.referrer
-      when personal_wishes_url
-        current_user.wishes
-      when owned_wishes_url
-        current_user.wishes.owned
-      else
-        # root_url
-        Wish.all.published.not_owned
-      end
+    when personal_wishes_url
+      current_user.wishes
+    when owned_wishes_url
+      current_user.wishes.owned
+    else
+      # root_url
+      Wish.all.published.not_owned
+    end
   end
 end
