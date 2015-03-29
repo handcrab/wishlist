@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310123837) do
+ActiveRecord::Schema.define(version: 20150329201116) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150310123837) do
     t.integer  "user_id"
   end
 
+  add_index "wishes", ["owned"], name: "index_wishes_on_owned"
+  add_index "wishes", ["public"], name: "index_wishes_on_public"
   add_index "wishes", ["user_id"], name: "index_wishes_on_user_id"
 
 end
